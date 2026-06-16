@@ -501,8 +501,13 @@ main {
     gap: 28px;
   }
 
-  .home-intro__photo img {
+  .home-intro__photo {
     width: 120px;
+    margin: 0 auto;
+  }
+
+  .home-intro__photo img {
+    width: 100%;
     aspect-ratio: 1;
   }
 
@@ -941,7 +946,7 @@ footer {
 
 .about-grid {
   display: grid;
-  grid-template-columns: 1fr 280px;
+  grid-template-columns: 280px 1fr;
   gap: 56px;
   align-items: start;
   padding: 56px 0;
@@ -957,7 +962,6 @@ footer {
 
 .about-photo {
   width: 240px;
-  margin-left: auto;
   border-radius: 50%;
   overflow: hidden;
   aspect-ratio: 1 / 1;
@@ -1308,7 +1312,7 @@ footer {
 
   .cs-hero__layout { grid-template-columns: 1fr; gap: 32px; }
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
-  .about-photo { max-width: 340px; aspect-ratio: 4/3; }
+  .about-photo { width: 180px; max-width: 100%; aspect-ratio: 1 / 1; margin: 0 auto; }
   .contact-grid { grid-template-columns: 1fr; gap: 32px; }
 }
 
