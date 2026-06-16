@@ -44,19 +44,6 @@ Cards can be filtered by category (All, UX Research, Interaction Design, UI/UX, 
 
 All images currently referenced by the site live in `images/`, including thumbnails for the project cards, the about page portrait, and the figures used inside each case study (domain model, sitemap, user journeys, wireframes, personas, and the Kindness Box prototype shots). Cards degrade gracefully, the coloured background shows if an image fails to load.
 
-## Hosting
-
-### GitHub Pages
-1. Push to a repo named `ericasaffron.github.io` (or any repo, then enable Pages in Settings → Pages → Deploy from branch `main`)
-2. That's it, no build step needed.
-
-### Custom domain (e.g. ericasaffron.com)
-1. Add a `CNAME` file in the repo root containing just: `ericasaffron.com`
-2. In your DNS settings, add:
-   - `A` record → `185.199.108.153` (and .109, .110, .111)
-   - or `CNAME` → `your-username.github.io`
-3. Enable "Enforce HTTPS" in GitHub Pages settings.
-
 ## Contact form
 
 The contact form on `contact.html` submits to Web3Forms and is protected with hCaptcha. It validates the subject and message fields before sending, and shows a 30-second cooldown after a successful submission. Configuration (access key and hCaptcha site key) lives directly in the page.
