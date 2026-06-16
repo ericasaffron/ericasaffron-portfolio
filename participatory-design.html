@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Magical Farm Workshop | Erica Saffron</title>
+<meta name="description" content="A participatory design project exploring community values at Spitalfields City Farm using Lego Serious Play.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0a0a0a;
+    --gray-900: #111;
+    --gray-600: #555;
+    --gray-400: #767676;
+    --gray-200: #e8e8e8;
+    --gray-100: #f5f5f5;
+    --white: #fff;
+    --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --max: 1100px;
+    --content: 700px;
+  }
+
+  html { font-size: 16px; }
+  body { font-family: var(--font); background: var(--white); color: var(--black); -webkit-font-smoothing: antialiased; }
+
+  /* LAYOUT */
+  .page { max-width: var(--max); margin: 0 auto; padding: 0 40px; }
+  .content { max-width: var(--content); }
+
+  /* HERO */
+  .hero { padding: 60px 0 48px; border-bottom: 1px solid var(--gray-200); }
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--gray-600); text-decoration: none; margin-bottom: 28px; transition: color 0.15s; }
+  .back-link:hover { color: var(--black); }
+  .back-link::before { content: '←'; }
+  .hero-layout { display: grid; grid-template-columns: 1fr 220px; gap: 48px; align-items: start; }
+  .hero h1 { font-size: clamp(32px, 5vw, 48px); font-weight: 700; letter-spacing: -1px; line-height: 1.1; margin-bottom: 16px; }
+  .hero-desc { font-size: 16px; color: var(--gray-600); line-height: 1.7; }
+  .meta-table { width: 100%; border-top: 1px solid var(--gray-200); padding-top: 20px; }
+  .meta-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--gray-200); font-size: 13px; }
+  .meta-label { color: var(--gray-400); }
+  .meta-value { color: var(--black); font-weight: 500; text-align: right; }
+
+  /* TAGS */
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+  .tag { font-size: 12px; border: 1px solid var(--gray-200); color: var(--gray-600); padding: 4px 12px; border-radius: 100px; }
+
+  /* SECTIONS */
+  .sections { padding: 60px 0; }
+  .section { margin-bottom: 56px; }
+  .section h2 { font-size: 22px; font-weight: 600; letter-spacing: -0.3px; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--gray-200); }
+  .section h3 { font-size: 16px; font-weight: 600; margin: 24px 0 8px; }
+  .section p { font-size: 15px; line-height: 1.75; color: var(--gray-600); margin-bottom: 14px; }
+  .section p:last-child { margin-bottom: 0; }
+
+  /* STAT GRID */
+  .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 1px; background: var(--gray-200); border: 1px solid var(--gray-200); border-radius: 8px; overflow: hidden; margin: 20px 0 28px; }
+  .stat { background: var(--white); padding: 20px 16px; }
+  .stat-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray-400); margin-bottom: 6px; }
+  .stat-value { font-size: 28px; font-weight: 700; letter-spacing: -1px; color: var(--black); line-height: 1; }
+  .stat-desc { font-size: 12px; color: var(--gray-600); margin-top: 4px; line-height: 1.4; }
+
+  /* TIMELINE */
+  .timeline { border-left: 2px solid var(--gray-200); padding-left: 24px; margin: 20px 0; }
+  .tl-item { position: relative; margin-bottom: 28px; }
+  .tl-item:last-child { margin-bottom: 0; }
+  .tl-item::before { content: ''; position: absolute; left: -31px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--black); border: 2px solid var(--white); outline: 2px solid var(--black); }
+  .tl-phase { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-400); margin-bottom: 4px; }
+  .tl-title { font-size: 15px; font-weight: 600; color: var(--black); margin-bottom: 6px; }
+  .tl-desc { font-size: 14px; color: var(--gray-600); line-height: 1.65; }
+  .tl-image { width: 100%; max-width: 420px; aspect-ratio: 16 / 10; object-fit: cover; display: block; border: 1px solid var(--gray-200); border-radius: 10px; margin-top: 12px; cursor: zoom-in; transition: transform 0.18s ease, opacity 0.18s ease; user-select: none; -webkit-user-drag: none; }
+  .tl-image:hover { transform: scale(1.02); opacity: 0.96; }
+
+  /* INSIGHT */
+  .insight { border-left: 3px solid var(--black); padding: 12px 0 12px 20px; margin: 20px 0; }
+  .insight-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-400); margin-bottom: 6px; }
+  .insight p { font-size: 14px; color: var(--gray-600); line-height: 1.65; margin: 0; }
+
+  /* REFLECTION CARDS */
+  .reflections { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+  .reflection { background: var(--gray-100); border-radius: 8px; padding: 20px 24px; }
+  .reflection-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-400); margin-bottom: 8px; }
+  .reflection p { font-size: 14px; color: var(--gray-600); line-height: 1.7; margin: 0; }
+
+  /* SKILL TAGS */
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .skill-tag { font-size: 13px; background: var(--gray-100); color: var(--gray-600); padding: 6px 14px; border-radius: 100px; }
+
+  /* GROUND RULES */
+  .rule-list { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 4px; }
+  .rule-pill { font-size: 13px; background: var(--gray-100); color: var(--black); padding: 6px 14px; border-radius: 100px; border: 1px solid var(--gray-200); }
+
+  /* PROPOSAL GRID */
+  .proposal-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 16px; }
+  .proposal-card { background: var(--gray-100); border-radius: 10px; padding: 20px 22px; }
+  .proposal-card img { width: 100%; aspect-ratio: 4 / 3; object-fit: contain; display: block; background: var(--white); border-radius: 8px; margin-bottom: 14px; cursor: zoom-in; transition: transform 0.18s ease, opacity 0.18s ease; user-select: none; -webkit-user-drag: none; }
+  .proposal-card img:hover { transform: scale(1.02); opacity: 0.96; }
+  .proposal-card h3 { font-size: 15px; font-weight: 600; margin: 0 0 8px; }
+  .proposal-card p { font-size: 13px; color: var(--gray-600); line-height: 1.65; margin: 0; }
+
+  /* LIGHTBOX */
+  .lightbox { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; padding: 20px; background: rgba(10, 10, 10, 0.78); z-index: 1200; }
+  .lightbox.open { display: flex; }
+  .lightbox-panel { width: min(1080px, 96vw); max-height: 92vh; background: var(--white); border: 1px solid var(--gray-200); border-radius: 18px; padding: 10px; box-shadow: 0 18px 60px rgba(10, 10, 10, 0.25); display: flex; flex-direction: column; }
+  .lightbox-img-wrap { overflow: hidden; border-radius: 12px; background: var(--white); flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; }
+  .lightbox-panel img { display: block; width: 100%; max-height: 78vh; object-fit: contain; background: var(--white); cursor: zoom-in; transform-origin: center center; user-select: none; -webkit-user-drag: none; }
+  .lightbox-panel img.lb-zoomed { cursor: grab; }
+  .lightbox-panel img.lb-dragging { cursor: grabbing; }
+  .lightbox-caption { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 4px 4px; font-size: 13px; color: var(--gray-600); flex-shrink: 0; }
+  .lightbox-close { border: 1px solid var(--gray-200); background: var(--gray-100); color: var(--black); border-radius: 999px; padding: 6px 10px; font-size: 12px; cursor: pointer; }
+
+  /* FOOTER */
+  footer { border-top: 1px solid var(--gray-200); padding: 60px 40px 40px; }
+  .footer-inner { max-width: var(--max); margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 32px; }
+  .footer-cta { text-align: center; }
+  .footer-cta h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 700; letter-spacing: -0.5px; margin-bottom: 20px; }
+  .footer-cta a { display: inline-block; background: var(--black); color: var(--white); text-decoration: none; font-size: 14px; font-weight: 500; padding: 14px 28px; border-radius: 100px; transition: opacity 0.15s; }
+  .footer-cta a:hover { opacity: 0.8; }
+  .footer-nav { display: flex; gap: 32px; list-style: none; }
+  .footer-nav a { font-size: 13px; color: var(--gray-600); text-decoration: none; }
+  .footer-nav a:hover { color: var(--black); }
+  .footer-copy { font-size: 12px; color: var(--gray-400); }
+
+  @media (max-width: 680px) {
+    nav { padding: 0 20px; }
+    .page { padding: 0 20px; }
+    .hero-layout { grid-template-columns: 1fr; }
+    .meta-table { border-top: none; }
+    .proposal-grid { grid-template-columns: 1fr; }
+    footer { padding: 40px 20px; }
+    .footer-nav { flex-wrap: wrap; gap: 20px; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+<script>
+  function imgPlaceholder(el) {
+    el.onerror = null;
+    el.src = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(
+      '<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300">' +
+      '<rect width="100%" height="100%" fill="#f1f1f1"/>' +
+      '<text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#999" font-family="sans-serif" font-size="14">Image coming soon</text>' +
+      '</svg>'
+    );
+  }
+</script>
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Erica Saffron home">
+        <img src="images/logo-black.jpg" alt="Erica Saffron" style="width:40px;height:40px;border-radius:999px;object-fit:cover;display:block;">
+      </a>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="portfolio.html">Case studies</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="nav__toggle" id="navToggle" type="button" aria-label="Toggle navigation menu" aria-controls="navLinks" aria-expanded="false" aria-haspopup="true">
+        <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+      </button>
+    </div>
+  </nav>
+
+<main id="main" class="page">
+
+  <div class="hero">
+    <a href="portfolio.html" class="back-link">All case studies</a>
+    <div class="hero-layout">
+      <div>
+        <div class="tags">
+          <span class="tag">Participatory Design</span>
+          <span class="tag">User Research</span>
+          <span class="tag">Community Engagement</span>
+          <span class="tag">Lego Serious Play</span>
+        </div>
+        <h1>The Magical Farm Workshop</h1>
+        <p class="hero-desc">A participatory design project exploring community values and visions for Spitalfields City Farm, using Lego Serious Play to surface insights that traditional research methods often miss.</p>
+        <div class="about-hero__image-wrap" style="margin-top:28px;width:100%;">
+          <img src="images/farm-location-thumb.jpg" alt="Erica Saffron" style="width:100%;height:300px;border-radius:24px;display:block;object-fit:cover;">
+        </div>
+      </div>
+      <div class="meta-table">
+        <div class="meta-row"><span class="meta-label">Role</span><span class="meta-value">Lead Facilitator &amp; Researcher</span></div>
+        <div class="meta-row"><span class="meta-label">Context</span><span class="meta-value">INM391 Creativity in Design, MSc HCID</span></div>
+        <div class="meta-row"><span class="meta-label">Methods</span><span class="meta-value">Lego Serious Play, Workshops, Field Research</span></div>
+        <div class="meta-row"><span class="meta-label">Team</span><span class="meta-value"> Erica Saffron, Alisha Daudi, Parinishta Thirumavalavan, Evangelos Tsionos, Paula Malinowska, and Maryna Azeez</span></div>
+        <div class="meta-row"><span class="meta-label">Location</span><span class="meta-value">Spitalfields City Farm, London</span></div>
+    </div>
+  </div>
+
+  <div class="sections content">
+
+    <div class="section">
+      <h2>Overview</h2>
+      <p>Spitalfields City Farm is one of 12 city farms in London. Created in 1978 on land bombed during World War 2, it has been a community space for over four decades. Owned by Tower Hamlets Council, the farm operates as a registered charity, a community space before it is a farm, serving a richly diverse local population including a significant Bangladeshi community.</p>
+      <p>Our brief was to explore the community's relationship with the farm, not to solve problems, but to understand values, hopes, and lived experiences. This required resisting the pull toward solutions and embracing a more open, participatory way of doing research.</p>
+      <div class="stat-grid">
+        <div class="stat"><div class="stat-label">Participants</div><div class="stat-value">10</div><div class="stat-desc">Across 4 workshop rounds</div></div>
+        <div class="stat"><div class="stat-label">Workshop rounds</div><div class="stat-value">4</div><div class="stat-desc">Tourists, students, farm staff</div></div>
+        <div class="stat"><div class="stat-label">Community groups</div><div class="stat-value">3</div><div class="stat-desc">Distinct participant types</div></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>The challenge</h2>
+      <p>The farm faced real pressures: £35,000 per month to maintain, a 25-year lease with 9 years remaining, and difficulty converting casual visitors into engaged community members. But our research goal was intentionally not about solving these problems.</p>
+      <div class="insight">
+        <div class="insight-label">Methodological decision</div>
+        <p>We chose to focus on aspiration rather than complaint, deliberately avoiding pain-point framing after seeing prior work where problem-focused prompts generated only negative and pessimistic views from participants. We hoped to generate richer, more generative data about the community's relationship with the space.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Research process</h2>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-phase">Phase 1</div>
+          <div class="tl-title">Field visit &amp; stakeholder interviews</div>
+          <div class="tl-desc">We visited the farm and spoke with Philip, the chief staff member, and Emma, a tour guide, learning about the farm's history, finances, and community context. A guided tour revealed the full scale of the farm: donkeys, goats, pigs, rescued battery hens, and Lutfun, a dedicated Bangladeshi gardener growing South Asian crops for the local community in Tower Hamlets.</div>
+          <img class="tl-image" src="images/phase-1-field-visit.jpg" alt="Field visit and stakeholder interviews at Spitalfields City Farm" onerror="imgPlaceholder(this)">
+        </div>
+        <div class="tl-item">
+          <div class="tl-phase">Phase 2</div>
+          <div class="tl-title">Team ideation &amp; method selection</div>
+          <div class="tl-desc">After experiencing Lego Serious Play in a lecture, where building objects helped articulate things we couldn't say in words, I proposed adapting it for a community workshop. We split into two groups: one running a Photo Voice (Farm Voice) activity, and ours creating the "Magical Farm Workshop" using Lego Serious Play and craft materials.</div>
+          <img class="tl-image" src="images/phase-2-ideation.jpg" alt="Team ideation and method selection" onerror="imgPlaceholder(this)">
+        </div>
+        <div class="tl-item">
+          <div class="tl-phase">Phase 3</div>
+          <div class="tl-title">Workshop design &amp; facilitation script</div>
+          <div class="tl-desc">I led the design of the facilitation script, ground rules, and task structure. Tasks focused on future visions and personal values rather than pain points. Participants would build artefacts, then place them on a map of the farm to explore where their ideas would "live." I also designed posters to recruit participants on the day.</div>
+          <img class="tl-image" src="images/phase-3-workshop-design.jpg" alt="Workshop design and facilitation script" onerror="imgPlaceholder(this)">
+        </div>
+        <div class="tl-item">
+          <div class="tl-phase">Phase 4</div>
+          <div class="tl-title">Pilot test</div>
+          <div class="tl-desc">We ran a pilot with our own team. I facilitated and we iterated on the warm-up task, changing it from "make your favourite farm animal" (too hard with limited Lego) to "what does nature mean to you?" We updated the ground rules based on feedback, ending with "have fun" to set a lighter tone.</div>
+          <img class="tl-image" src="images/phase-4-pilot-test.jpg" alt="Pilot test session" onerror="imgPlaceholder(this)">
+        </div>
+        <div class="tl-item">
+          <div class="tl-phase">Phase 5</div>
+          <div class="tl-title">Community workshop</div>
+          <div class="tl-desc">We ran 4 rounds with 10 participants in total: two Belgian tourists who'd come to see the donkeys, HCID classmates, and, most valuably, three members of the farm staff. I facilitated all four rounds.</div>
+          <img class="tl-image" src="images/phase-5-community-workshop.jpg" alt="Community workshop session" onerror="imgPlaceholder(this)">
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Workshop script</h2>
+      <p>The final script opened with five ground rules, refined after the pilot to set a comfortable, judgment-free tone before anyone picked up a brick.</p>
+      <div class="rule-list">
+        <span class="rule-pill">Respect</span>
+        <span class="rule-pill">Confidentiality</span>
+        <span class="rule-pill">No judgment</span>
+        <span class="rule-pill">Well-being</span>
+        <span class="rule-pill">Have fun</span>
+      </div>
+      <h3>Warm-up</h3>
+      <p>"What does nature mean to you?" — a low-stakes prompt to get everyone comfortable building with Lego before moving into farm-specific tasks.</p>
+      <h3>Task 1</h3>
+      <p>Build something that represents your relationship with Spitalfields City Farm: a memory, a feeling, or a value the farm holds for you.</p>
+      <h3>Task 2</h3>
+      <p>Build a vision for what you'd want the farm to become, or keep being, in the future.</p>
+      <h3>Task 3</h3>
+      <p>Place your artefacts on a map of the farm, showing where your ideas would "live" and why, then talk through your choices with the group.</p>
+    </div>
+
+    <div class="section">
+      <h2>Key findings</h2>
+      <h3>Emergent collaboration among farm staff</h3>
+      <p>The most significant finding came from the farm staff session. Unlike other groups who built independently, the three staff members began connecting their Lego pieces together, creating a shared structure without being prompted. This demonstrated the depth of connection they felt with each other and with the farm, and revealed something about the social fabric of the community that no interview question could have directly surfaced.</p>
+      <h3>Outsiders as a data source</h3>
+      <p>The Belgian tourists, who had come to the farm specifically to see the donkeys after finding it on social media, provided an unexpected lens. Their participation offered insights into why people choose Spitalfields Farm over other London farms, a question relevant to the farm's visibility and appeal.</p>
+      <h3>Silence as a feature, not a bug</h3>
+      <p>The making-based nature of the workshop meant that silence was appropriate and comfortable for participants. This contrasts with interview-based research where silence can feel awkward or signal disengagement. Because everyone built independently, each artefact was unique, preventing social influence on responses even when participants were working simultaneously.</p>
+      <h3>FarmVoice: photographs as another way in</h3>
+      <p>The parallel Photo Voice (FarmVoice) workshop asked participants to submit photos answering prompts like "what the farm means to you" and "something that sparks joy." Responses converged on themes of family, community, and belonging, with one participant describing the farm as "this smooth fusion of city and farm," reinforcing what we were seeing independently in the Lego Serious Play sessions.</p>
+    </div>
+
+    <div class="section">
+      <h2>From research to proposals</h2>
+      <p>Insights from both workshops fed into four speculative concepts presented at the final showcase, each exploring a different way technology could deepen the community's relationship with the farm without losing its human, hands-on character.</p>
+      <div class="proposal-grid">
+        <div class="proposal-card">
+          <img src="images/proposal-tycoon-rats-farm.jpg" alt="Tycoon Rats Farm concept" onerror="imgPlaceholder(this)">
+          <h3>Tycoon Rats Farm</h3>
+          <p>A playful concept built around an AI speech interpreter that lets farmers and the farm's resident rats "negotiate" shared space, reframing a usual nuisance as a relationship worth designing for rather than against.</p>
+        </div>
+        <div class="proposal-card">
+          <img src="images/proposal-spitalfields-farm-portal.jpg" alt="Spitalfields Farm Portal concept" onerror="imgPlaceholder(this)">
+          <h3>Spitalfields Farm Portal</h3>
+          <p>A sensory connected box that streams sound, smell, and live video from the farm into community spaces, so people who can't visit in person can still feel part of it.</p>
+        </div>
+        <div class="proposal-card">
+          <img src="images/proposal-smart-seeds-capsule.jpg" alt="Smart Seeds Capsule concept" onerror="imgPlaceholder(this)">
+          <h3>Smart Seeds Capsule</h3>
+          <p>A shoe-attached capsule and companion app that scatters wildflower seeds as people walk through the city, turning everyday movement into small acts of urban rewilding.</p>
+        </div>
+        <div class="proposal-card">
+          <img src="images/proposal-spitalfields-social-pot.jpg" alt="Spitalfields Social Pot concept" onerror="imgPlaceholder(this)">
+          <h3>Spitalfields Social Pot</h3>
+          <p>An IoT-enabled community garden and animal care system, illustrated through "Mr. Holmes" the pig, whose health and wellbeing could be monitored and shared with the volunteers who care for him.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>What I learned</h2>
+      <div class="reflections">
+        <div class="reflection">
+          <div class="reflection-label">On facilitation</div>
+          <p>I chose to facilitate the workshop to overcome a fear of public speaking. Across four rounds I improved significantly, though I noticed tendencies to remain standing and tense rather than being calm and present. Being corrected by teammates in the moment, while uncomfortable, was genuinely useful. Facilitation is a skill that only improves through practice.</p>
+        </div>
+        <div class="reflection">
+          <div class="reflection-label">On participatory design methodology</div>
+          <p>The framing of research goals shapes the quality of data. By choosing not to focus on pain points, we got generative and aspirational insights. The decision to use a making-based method allowed people who wouldn't have spoken freely in an interview to participate meaningfully.</p>
+        </div>
+        <div class="reflection">
+          <div class="reflection-label">On research planning</div>
+          <p>The parallel workshop group spent too long with tourists and couldn't include farm staff, a missed opportunity. This underscored the importance of aligning on participant criteria before going into the field, and the value of pilot testing for time management as well as task design.</p>
+        </div>
+        <div class="reflection">
+          <div class="reflection-label">On moving away from solutionism</div>
+          <p>Coming from a Computer Science and AI background, I was trained to identify problems and immediately propose solutions. This project actively pushed against that instinct. Learning to sit with open-ended exploration, without jumping to "what should we build?", was one of the most intellectually challenging and rewarding aspects of the work.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Skills demonstrated</h2>
+      <div class="skill-tags">
+        <span class="skill-tag">Workshop facilitation</span>
+        <span class="skill-tag">Participatory design</span>
+        <span class="skill-tag">Lego Serious Play</span>
+        <span class="skill-tag">Stakeholder interviews</span>
+        <span class="skill-tag">Field research</span>
+        <span class="skill-tag">Pilot testing</span>
+        <span class="skill-tag">Reflective practice</span>
+        <span class="skill-tag">Research framing</span>
+        <span class="skill-tag">Community engagement</span>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<div id="lightbox" class="lightbox" aria-hidden="true">
+  <div class="lightbox-panel" role="dialog" aria-modal="true" aria-label="Expanded image preview">
+    <div class="lightbox-img-wrap">
+      <img id="lightbox-image" src="" alt="" />
+    </div>
+    <div class="lightbox-caption">
+      <span>Scroll to zoom · Drag to pan · Esc to close</span>
+      <button class="lightbox-close" type="button" aria-label="Close image preview">Close</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-cta">
+      <h2>Let's create your next big idea.</h2>
+      <a href="https://calendly.com/ericasaffron/initial-consultation">Schedule a call →</a>
+    </div>
+    <ul class="footer-nav">
+      <li><a href="https://ericasaffron.com/index.html">Home</a></li>
+      <li><a href="https://ericasaffron.com/portfolio.html">Case studies</a></li>
+      <li><a href="https://ericasaffron.com/about.html">About</a></li>
+      <li><a href="https://ericasaffron.com/contact.html">Contact</a></li>
+    </ul>
+    <p class="footer-copy">© 2025 Erica Saffron</p>
+  </div>
+</footer>
+<script src="js/nav.js"></script>
+<script>
+  (function () {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightbox-image');
+    const closeButton = document.querySelector('.lightbox-close');
+    const photoImages = document.querySelectorAll('.proposal-card img, .tl-image');
+
+    const MIN_SCALE = 1, MAX_SCALE = 5;
+    let scale = 1, panX = 0, panY = 0;
+    let isDragging = false, didDrag = false;
+    let dragStartX = 0, dragStartY = 0, panStartX = 0, panStartY = 0;
+
+    function applyTransform() {
+      lightboxImage.style.transform = 'scale(' + scale + ') translate(' + panX + 'px,' + panY + 'px)';
+    }
+
+    function resetZoom() {
+      scale = 1; panX = 0; panY = 0;
+      applyTransform();
+      lightboxImage.classList.remove('lb-zoomed', 'lb-dragging');
+    }
+
+    function closeLightbox() {
+      if (!lightbox) return;
+      resetZoom();
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    function openLightbox(image) {
+      if (!lightbox || !lightboxImage) return;
+      resetZoom();
+      lightboxImage.src = image.getAttribute('src');
+      lightboxImage.alt = image.getAttribute('alt') || 'Expanded image preview';
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    lightboxImage.addEventListener('wheel', function (e) {
+      e.preventDefault();
+      const factor = e.deltaY < 0 ? 1.15 : 1 / 1.15;
+      scale = Math.min(MAX_SCALE, Math.max(MIN_SCALE, scale * factor));
+      if (scale <= 1) { scale = 1; panX = 0; panY = 0; }
+      applyTransform();
+      lightboxImage.classList.toggle('lb-zoomed', scale > 1);
+    }, { passive: false });
+
+    lightboxImage.addEventListener('click', function () {
+      if (didDrag) { didDrag = false; return; }
+      if (scale > 1) {
+        resetZoom();
+      } else {
+        scale = 2; panX = 0; panY = 0;
+        applyTransform();
+        lightboxImage.classList.add('lb-zoomed');
+      }
+    });
+
+    lightboxImage.addEventListener('mousedown', function (e) {
+      if (scale <= 1) return;
+      isDragging = true; didDrag = false;
+      dragStartX = e.clientX; dragStartY = e.clientY;
+      panStartX = panX; panStartY = panY;
+      lightboxImage.classList.add('lb-dragging');
+      e.preventDefault();
+    });
+
+    document.addEventListener('mousemove', function (e) {
+      if (!isDragging) return;
+      const dx = (e.clientX - dragStartX) / scale;
+      const dy = (e.clientY - dragStartY) / scale;
+      if (Math.abs(dx) > 2 || Math.abs(dy) > 2) didDrag = true;
+      panX = panStartX + dx; panY = panStartY + dy;
+      applyTransform();
+    });
+
+    document.addEventListener('mouseup', function () {
+      if (!isDragging) return;
+      isDragging = false;
+      lightboxImage.classList.remove('lb-dragging');
+    });
+
+    photoImages.forEach(function (image) {
+      image.addEventListener('click', function () { openLightbox(image); });
+    });
+
+    if (lightbox) {
+      lightbox.addEventListener('click', function (e) {
+        if (e.target === lightbox) closeLightbox();
+      });
+    }
+
+    if (closeButton) closeButton.addEventListener('click', closeLightbox);
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  })();
+</script>
+
+</body>
+</html>

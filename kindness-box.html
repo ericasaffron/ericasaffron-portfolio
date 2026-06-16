@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Kindness Box | Erica Saffron</title>
+<meta name="description" content="A team interaction design project designing an interactive vending machine for kindness at King's Cross station.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0a0a0a;
+    --gray-600: #555;
+    --gray-400: #767676;
+    --gray-200: #e8e8e8;
+    --gray-100: #f5f5f5;
+    --white: #fff;
+    --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --max: 1100px;
+    --content: 700px;
+  }
+
+  html { font-size: 16px; }
+  body { font-family: var(--font); background: var(--white); color: var(--black); -webkit-font-smoothing: antialiased; }
+
+  .page { max-width: var(--max); margin: 0 auto; padding: 0 40px; }
+  .content { max-width: var(--content); }
+
+  .hero { padding: 60px 0 48px; border-bottom: 1px solid var(--gray-200); }
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--gray-600); text-decoration: none; margin-bottom: 28px; transition: color 0.15s; }
+  .back-link:hover { color: var(--black); }
+  .back-link::before { content: '←'; }
+  .hero-layout { display: grid; grid-template-columns: 1fr 220px; gap: 48px; align-items: start; }
+  .hero h1 { font-size: clamp(32px, 5vw, 48px); font-weight: 700; letter-spacing: -1px; line-height: 1.1; margin-bottom: 16px; }
+  .hero-desc { font-size: 16px; color: var(--gray-600); line-height: 1.7; }
+  .meta-table { width: 100%; border-top: 1px solid var(--gray-200); padding-top: 20px; }
+  .meta-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--gray-200); font-size: 13px; }
+  .meta-label { color: var(--gray-400); }
+  .meta-value { color: var(--black); font-weight: 500; text-align: right; }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+  .tag { font-size: 12px; border: 1px solid var(--gray-200); color: var(--gray-600); padding: 4px 12px; border-radius: 100px; }
+
+  .sections { padding: 60px 0; }
+  .section { margin-bottom: 56px; }
+  .section h2 { font-size: 22px; font-weight: 600; letter-spacing: -0.3px; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--gray-200); }
+  .section h3 { font-size: 16px; font-weight: 600; margin: 24px 0 8px; }
+  .section p { font-size: 15px; line-height: 1.75; color: var(--gray-600); margin-bottom: 14px; }
+  .section p:last-child { margin-bottom: 0; }
+
+  .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 1px; background: var(--gray-200); border: 1px solid var(--gray-200); border-radius: 8px; overflow: hidden; margin: 20px 0 28px; }
+  .stat { background: var(--white); padding: 20px 16px; }
+  .stat-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray-400); margin-bottom: 6px; }
+  .stat-value { font-size: 28px; font-weight: 700; letter-spacing: -1px; color: var(--black); line-height: 1; }
+  .stat-desc { font-size: 12px; color: var(--gray-600); margin-top: 4px; line-height: 1.4; }
+
+  .deliverable-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; margin: 16px 0 8px; }
+  .deliverable { border: 1px solid var(--gray-200); border-radius: 8px; padding: 16px; }
+  .deliverable-title { font-size: 13px; font-weight: 600; color: var(--black); margin-bottom: 4px; }
+  .deliverable-desc { font-size: 12px; color: var(--gray-600); line-height: 1.5; }
+
+  .persona-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 16px; margin: 16px 0; }
+  .persona { border: 1px solid var(--gray-200); border-radius: 8px; overflow: hidden; }
+  .persona-header { padding: 16px 20px 14px; border-bottom: 1px solid var(--gray-200); }
+  .persona-name { font-size: 15px; font-weight: 600; color: var(--black); margin-bottom: 2px; }
+  .persona-sub { font-size: 12px; color: var(--gray-400); }
+  .persona-body { padding: 16px 20px; }
+  .persona-quote { font-style: italic; font-size: 13px; color: var(--gray-600); line-height: 1.6; border-left: 2px solid var(--gray-200); padding-left: 12px; margin-bottom: 14px; }
+  .persona-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .persona-col-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-400); margin-bottom: 6px; }
+  .persona-col ul { padding-left: 14px; font-size: 12px; color: var(--gray-600); line-height: 1.7; }
+
+  .opp-box { background: var(--gray-100); border-radius: 8px; padding: 18px 22px; margin: 16px 0; }
+  .opp-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-400); margin-bottom: 8px; }
+  .opp-box p { font-size: 14px; color: var(--gray-600); line-height: 1.7; margin: 0; }
+
+  .insight { border-left: 3px solid var(--black); padding: 12px 0 12px 20px; margin: 20px 0; }
+  .insight-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-400); margin-bottom: 6px; }
+  .insight p { font-size: 14px; color: var(--gray-600); line-height: 1.65; margin: 0; }
+
+  .journey-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin: 12px 0 24px; }
+  .phase-card { background: var(--gray-100); border-radius: 8px; padding: 14px; }
+  .phase-num { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-400); margin-bottom: 4px; }
+  .phase-title { font-size: 13px; font-weight: 600; color: var(--black); margin-bottom: 6px; }
+  .phase-desc { font-size: 11px; color: var(--gray-600); line-height: 1.55; }
+
+  .proto-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; margin: 16px 0; }
+  .proto-card { border: 1px solid var(--gray-200); border-radius: 8px; padding: 16px; }
+  .proto-title { font-size: 13px; font-weight: 600; color: var(--black); margin-bottom: 6px; }
+  .proto-desc { font-size: 12px; color: var(--gray-600); line-height: 1.55; }
+
+  .reflections { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+  .reflection { background: var(--gray-100); border-radius: 8px; padding: 20px 24px; }
+  .reflection-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-400); margin-bottom: 8px; }
+  .reflection p { font-size: 14px; color: var(--gray-600); line-height: 1.7; margin: 0; }
+
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .skill-tag { font-size: 13px; background: var(--gray-100); color: var(--gray-600); padding: 6px 14px; border-radius: 100px; }
+
+  footer { border-top: 1px solid var(--gray-200); padding: 60px 40px 40px; }
+  .footer-inner { max-width: var(--max); margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 32px; }
+  .footer-cta { text-align: center; }
+  .footer-cta h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 700; letter-spacing: -0.5px; margin-bottom: 20px; }
+  .footer-cta a { display: inline-block; background: var(--black); color: var(--white); text-decoration: none; font-size: 14px; font-weight: 500; padding: 14px 28px; border-radius: 100px; transition: opacity 0.15s; }
+  .footer-cta a:hover { opacity: 0.8; }
+  .footer-nav { display: flex; gap: 32px; list-style: none; }
+  .footer-nav a { font-size: 13px; color: var(--gray-600); text-decoration: none; }
+  .footer-nav a:hover { color: var(--black); }
+  .footer-copy { font-size: 12px; color: var(--gray-400); }
+
+  .wf-visual { border: 1px solid var(--gray-200); border-radius: 12px; overflow: hidden; background: var(--gray-100); margin-bottom: 12px; }
+  .wf-visual img { width: 100%; aspect-ratio: 16 / 10; object-fit: contain; display: block; cursor: zoom-in; transition: transform 0.18s ease, opacity 0.18s ease; user-select: none; -webkit-user-drag: none; }
+  .wf-visual img:hover { transform: scale(1.02); opacity: 0.96; }
+
+  .domain-model-figure { margin: 18px auto 0; max-width: 760px; }
+  .domain-model-figure img { width: 100%; height: auto; display: block; margin: 0 auto; object-fit: contain; border: 1px solid var(--gray-200); border-radius: 12px; background: var(--white); cursor: zoom-in; user-select: none; -webkit-user-drag: none; }
+
+  .lightbox { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; padding: 20px; background: rgba(10,10,10,0.78); z-index: 1200; }
+  .lightbox.open { display: flex; }
+  .lightbox-panel { width: min(1080px, 96vw); max-height: 92vh; background: var(--white); border: 1px solid var(--gray-200); border-radius: 18px; padding: 10px; box-shadow: 0 18px 60px rgba(10,10,10,0.25); display: flex; flex-direction: column; }
+  .lightbox-img-wrap { overflow: hidden; border-radius: 12px; background: var(--white); flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; }
+  .lightbox-panel img { display: block; width: 100%; max-height: 78vh; object-fit: contain; background: var(--white); cursor: zoom-in; transform-origin: center center; user-select: none; -webkit-user-drag: none; }
+  .lightbox-panel img.lb-zoomed { cursor: grab; }
+  .lightbox-panel img.lb-dragging { cursor: grabbing; }
+  .lightbox-caption { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 4px 4px; font-size: 13px; color: var(--gray-600); flex-shrink: 0; }
+  .lightbox-close { border: 1px solid var(--gray-200); background: var(--gray-100); color: var(--black); border-radius: 999px; padding: 6px 10px; font-size: 12px; cursor: pointer; }
+
+  @media (max-width: 680px) {
+    nav { padding: 0 20px; }
+    .page { padding: 0 20px; }
+    .hero-layout { grid-template-columns: 1fr; }
+    footer { padding: 40px 20px; }
+    .footer-nav { flex-wrap: wrap; gap: 20px; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Erica Saffron home">
+        <img src="images/logo-black.jpg" alt="Erica Saffron" style="width:40px;height:40px;border-radius:999px;object-fit:cover;display:block;">
+      </a>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="portfolio.html">Case studies</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="nav__toggle" id="navToggle" type="button" aria-label="Toggle navigation menu" aria-controls="navLinks" aria-expanded="false" aria-haspopup="true">
+        <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+      </button>
+    </div>
+  </nav>
+
+<main id="main" class="page">
+
+  <div class="hero">
+    <a href="portfolio.html" class="back-link">All case studies</a>
+    <div class="hero-layout">
+      <div>
+        <div class="tags">
+          <span class="tag">Interaction Design</span>
+          <span class="tag">User Research</span>
+          <span class="tag">Prototyping</span>
+          <span class="tag">Service Design</span>
+        </div>
+        <h1>The Kindness Box</h1>
+        <p class="hero-desc">A team interaction design project exploring how King's Cross Station could become a site of human connection through field research, iterative prototyping, and a high-fidelity interactive vending machine concept.</p>
+          <div class="about-hero__image-wrap" style="margin-top:28px;width:100%;">
+          <img src="images/kindness-box-thumb.jpg" alt="Erica Saffron" style="width:100%;height:300px;border-radius:24px;display:block;object-fit:cover;">
+        </div>
+      </div>
+      <div class="meta-table">
+        <div class="meta-row"><span class="meta-label">Role</span><span class="meta-value">UX Researcher</span></div>
+        <div class="meta-row"><span class="meta-label">Context</span><span class="meta-value">INM452 MSc HCID, Interaction Design module</span></div>
+        <div class="meta-row"><span class="meta-label">Team</span><span class="meta-value">Erica Saffron, Sriram Venkitachalam, Iriani Amirudin, Karen Leung</span></div>
+        <div class="meta-row"><span class="meta-label">Output</span><span class="meta-value">High-fidelity prototype + poster</span></div>
+        <div class="meta-row"><span class="meta-label">Location</span><span class="meta-value">King's Cross Station, London</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sections content">
+
+    <div class="section">
+      <h2>Overview</h2>
+      <p>We were tasked with designing a creative, interactive digital technology that enhances visitor experience in an open-air public space by enabling an "act of kindness." We chose King's Cross Station, a major transport hub drawing travellers and commuters from across the UK and Europe, precisely because its diverse, transitory crowd made it both a challenging and meaningful context for kindness.</p>
+      <div class="stat-grid">
+        <div class="stat"><div class="stat-label">Interviews</div><div class="stat-value">15</div><div class="stat-desc">Travellers, commuters, staff &amp; homeless individuals</div></div>
+        <div class="stat"><div class="stat-label">Personas</div><div class="stat-value">2</div><div class="stat-desc">A giver and a receiver of kindness</div></div>
+        <div class="stat"><div class="stat-label">User journeys</div><div class="stat-value">4</div><div class="stat-desc">Existing (×2) and future (×2) mapped</div></div>
+        <div class="stat"><div class="stat-label">Prototype stages</div><div class="stat-value">2</div><div class="stat-desc">Cardboard → high-fidelity 3D</div></div>
+      </div>
+      <div class="deliverable-grid">
+        <div class="deliverable"><div class="deliverable-title">Research report</div><div class="deliverable-desc">Full written report covering all phases</div></div>
+        <div class="deliverable"><div class="deliverable-title">Personas</div><div class="deliverable-desc">Helen (giver) and John (receiver)</div></div>
+        <div class="deliverable"><div class="deliverable-title">User journeys</div><div class="deliverable-desc">Before and after Kindness Box interaction</div></div>
+        <div class="deliverable"><div class="deliverable-title">Hi-fi prototype</div><div class="deliverable-desc">Full interaction flow for the vending machine</div></div>
+        <div class="deliverable"><div class="deliverable-title">Poster</div><div class="deliverable-desc">On-site communications piece</div></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>The research challenge</h2>
+      <p>King's Cross is one of London's busiest transport hubs, a place most people pass through rather than stay in. Our research question was: how can an interactive technology make kindness feel possible, easy, and meaningful in a space defined by movement and anonymity?</p>
+      <p>Before we could answer that, we needed to understand what kindness meant to the people who actually used this space, and whether they even associated King's Cross with it at all.</p>
+      <div class="insight">
+        <div class="insight-label">Key finding from interviews</div>
+        <p>Participants found it difficult to connect the concept of kindness to King's Cross specifically. The station felt cold and impersonal to many. This told us our design would need to do more than provide a mechanism for kindness. It would also need to make the space itself feel like a more inviting context for it.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>User research &amp; personas</h2>
+      <p>We conducted observational visits to King's Cross at various times and days, then interviewed 15 people including travellers, commuters, station employees, homeless individuals, and tourists. The interviews surfaced two distinct user needs that shaped all subsequent design decisions.</p>
+
+      <div class="persona">
+        <div class="persona-header">
+          <figure class="wf-visual"><img src="images/helen-persona.jpg" alt="Helen Sharpe persona portrait" /></figure>
+          <div class="persona-name">Helen Sharpe, 70</div>
+          <div class="persona-sub">Travel writer · London · the giver</div>
+        </div>
+        <div class="persona-body">
+          <div class="persona-quote">"Kindness means the whole world. It's about being good to one another, and thinking about how other people feel."</div>
+          <div class="persona-cols">
+            <div class="persona-col"><div class="persona-col-label">Goals</div><ul><li>Help someone in need</li><li>Have a positive commute</li><li>Brighten someone's day</li></ul></div>
+            <div class="persona-col"><div class="persona-col-label">Frustrations</div><ul><li>People ignoring those in need</li><li>Station feels cold &amp; impersonal</li><li>Overwhelmed in rush hour</li></ul></div>
+          </div>
+        </div>
+      </div>
+      <div class="opp-box">
+      <div class="opp-label">Opportunity: Helen</div>
+        <p>People like Helen see someone in need of kindness but don't know how to engage. How can it be easier to give? How can kindness become a significant, visible presence in what feels like an impersonal, transitory place?</p>
+      </div>
+      <div class="persona" style="margin-top:16px;">
+        <div class="persona-header">
+          <figure class="wf-visual"><img src="images/john-persona.jpg" alt="John Heading persona portrait" /></figure>
+          <div class="persona-name">John Heading, 35</div>
+          <div class="persona-sub">Accounts manager · Brighton · the receiver</div>
+        </div>
+        <div class="persona-body">
+          <div class="persona-quote">"There's not much kindness around King's Cross. Smiling isn't difficult, is it? Maybe a hello would be nice."</div>
+          <div class="persona-cols">
+            <div class="persona-col"><div class="persona-col-label">Goals</div><ul><li>Stress-free journey home</li><li>Decompress after work</li><li>Memorable family visits</li></ul></div>
+            <div class="persona-col"><div class="persona-col-label">Frustrations</div><ul><li>People rushing and being rude</li><li>Feeling alone at the station</li><li>King's Cross feeling transitory</li></ul></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="opp-box">
+        <div class="opp-label">Opportunity: John</div>
+        <p>A large number of people would benefit from a warm presence at the station. How can warmth be spread outward? How can kindness become more than an occasional random act, and feel like part of the character of the space?</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Existing user journeys</h2>
+      <p>Before designing any solution, we mapped the existing journeys of both personas through King's Cross, tracking not just tasks but emotions at each stage. Both journeys end with missed opportunity: Helen wanting to help someone but not knowing how; John arriving home deflated after an encounter with a rude stranger.</p>
+      <p>These emotional arcs gave us concrete design targets: the Kindness Box needed to intervene at the "waiting in King's Cross" phase, the moment of emotional low, and transform it into a high point.</p>
+
+      <div class="persona" style="margin-top:20px;">
+        <div class="persona-header">
+          <figure class="wf-visual" style="margin-bottom:0;"><img src="images/helen-journey.jpg" alt="Helen's existing user journey through King's Cross" /></figure>
+        </div>
+        <div class="persona-body" style="padding:12px 16px;">
+          <div class="persona-name">Helen Sharpe, the giver</div>
+          <div class="persona-sub" style="margin-top:2px;">Existing journey: wants to help, no outlet to do so</div>
+        </div>
+      </div>
+      <div class="persona" style="margin-top:16px;">
+        <div class="persona-header">
+          <figure class="wf-visual" style="margin-bottom:0;"><img src="images/john-journey.jpg" alt="John's existing user journey through King's Cross" /></figure>
+        </div>
+        <div class="persona-body" style="padding:12px 16px;">
+          <div class="persona-name">John Heading, the receiver</div>
+          <div class="persona-sub" style="margin-top:2px;">Existing journey: deflated after a rude encounter at the station</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Conceptual design: the cardboard prototype</h2>
+      <p>Rather than jumping straight to screens, we built a rough cardboard prototype from two corrugated boxes assembled to resemble a vending machine. We placed it at various locations around King's Cross and its surroundings, observing how passers-by reacted. The prototype posed two questions in writing:</p>
+      <div class="opp-box">
+        <p style="margin-bottom: 8px;">1. "If there was a vending machine for kindness at King's Cross, what would you take from it?"</p>
+        <p>2. "If there was a vending machine for kindness at King's Cross, what would you give to it?"</p>
+      </div>
+      <p>Responses included smiles and hugs, dancing, hot coffee, and favours, which directly seeded the four kindness categories in the final design: Positive Affirmations, Food &amp; Drink, Entertainment, and Donate to Charity.</p>
+      <div class="insight">
+        <div class="insight-label">What the prototype told us</div>
+        <p>People engaged most readily when given a simple, low-commitment prompt. The cardboard box removed the social friction of approaching a stranger, since a machine felt safer and more anonymous than a person. This validated the vending machine format as the right interaction model.</p>
+      </div>
+      <figure class="domain-model-figure">
+        <img src="images/cardboard-box.jpg" alt="Cardboard vending machine prototype for the Kindness Box, placed at King's Cross" />
+      </figure>
+    </div>
+
+    <div class="section">
+      <h2>Future user journeys</h2>
+      <p>With the concept validated, we mapped how Helen and John's journeys would change with the Kindness Box present. Both journeys now end with a rising emotional arc, a significant reversal from the existing journeys.</p>
+
+      <h3 style="margin-top:20px;">Helen's journey: giving kindness</h3>
+      <div class="journey-grid">
+        <div class="phase-card"><div class="phase-num">Phase 1</div><div class="phase-title">Approaching</div><div class="phase-desc">She spots the Box near tickets. The stickers about kindness make her curious.</div></div>
+        <div class="phase-card"><div class="phase-num">Phase 2</div><div class="phase-title">Initial interaction</div><div class="phase-desc">The Box greets her and gives the option to give or take. She chooses to give.</div></div>
+        <div class="phase-card"><div class="phase-num">Phase 3</div><div class="phase-title">Choosing a form</div><div class="phase-desc">Shown four types of kindness. She explores Positive Affirmation and Personal Postcard before choosing video.</div></div>
+        <div class="phase-card"><div class="phase-num">Phase 4</div><div class="phase-title">Recording her message</div><div class="phase-desc">She records "You are loved, take care of yourself" and submits.</div></div>
+        <div class="phase-card"><div class="phase-num">Phase 5</div><div class="phase-title">Final interaction</div><div class="phase-desc">A QR code is printed. The Box shows how many people have shared kindness today. She leaves happy.</div></div>
+      </div>
+      <div class="persona" style="margin-top:16px;">
+        <div class="persona-header">
+          <figure class="wf-visual" style="margin-bottom:0;"><img src="images/helen-future-journey.jpg" alt="Helen's future user journey with the Kindness Box" /></figure>
+        </div>
+        <div class="persona-body" style="padding:12px 16px;">
+          <div class="persona-name">Helen Sharpe, giving kindness</div>
+          <div class="persona-sub" style="margin-top:2px;">Future journey: spots the Box, records a video message, leaves happy</div>
+        </div>
+      </div>
+
+      <h3 style="margin-top:28px;">John's journey: receiving kindness</h3>
+      <div class="journey-grid">
+        <div class="phase-card"><div class="phase-num">Phase 1</div><div class="phase-title">Approaching</div><div class="phase-desc">The motion sensor detects him. Animations and quotes catch his eye as he walks toward the platform.</div></div>
+        <div class="phase-card"><div class="phase-num">Phase 2</div><div class="phase-title">Initial interaction</div><div class="phase-desc">He chooses Entertainment, since he's not in the mood to give today.</div></div>
+        <div class="phase-card"><div class="phase-num">Phase 3</div><div class="phase-title">Taking kindness</div><div class="phase-desc">Shown Song, Jokes, Book, Surprise me! He clicks "Surprise me!"</div></div>
+        <div class="phase-card"><div class="phase-num">Phase 4</div><div class="phase-title">Receiving a book</div><div class="phase-desc">He receives "You, Me and Empathy", donated by another user.</div></div>
+        <div class="phase-card"><div class="phase-num">Phase 5</div><div class="phase-title">Final interaction</div><div class="phase-desc">The Box tells him the book was donated by someone wanting to share kindness. He considers being a giver next time.</div></div>
+      </div>
+      <div class="persona" style="margin-top:16px;">
+        <div class="persona-header">
+          <figure class="wf-visual" style="margin-bottom:0;"><img src="images/john-future-journey.jpg" alt="John's future user journey with the Kindness Box" /></figure>
+        </div>
+        <div class="persona-body" style="padding:12px 16px;">
+          <div class="persona-name">John Heading, receiving kindness</div>
+          <div class="persona-sub" style="margin-top:2px;">Future journey: receives a donated book, considers becoming a giver</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Detailed design: the high-fidelity prototype</h2>
+      <p>Moving from cardboard to a fully realised concept, we created a high-fidelity prototype and 3D visualisation of the Kindness Box as it would appear on-site at King's Cross. The machine is a tall, iridescent holographic kiosk, visually distinctive enough to stop people in a busy station, but not intimidating.</p>
+      <figure class="domain-model-figure">
+        <img src="images/kindness-box-thumb.jpg" alt="High-fidelity prototype visualisation of the Kindness Box" />
+      </figure>
+      <div class="proto-grid">
+        <div class="proto-card"><div class="proto-title">Large display screen</div><div class="proto-desc">Shows animated content, quotes, and affirmations. Motion-sensor triggered to engage passersby before they approach.</div></div>
+        <div class="proto-card"><div class="proto-title">Give or take kindness</div><div class="proto-desc">The core binary choice that branches into four categories: Positive Affirmation, Food &amp; Drink, Entertainment, Donate to Charity.</div></div>
+        <div class="proto-card"><div class="proto-title">Multi-format input</div><div class="proto-desc">Givers can share kindness as text, audio, video, or a personal postcard, lowering the barrier to participation.</div></div>
+        <div class="proto-card"><div class="proto-title">QR code sharing</div><div class="proto-desc">Messages are printed as a QR code to take home and share. Community impact counter shows how many people have engaged.</div></div>
+        <div class="proto-card"><div class="proto-title">Floor stickers</div><div class="proto-desc">"Hey." "How are you?" "Do you have some time for kindness?" Physical stickers lead people toward the Box and prime them before they arrive.</div></div>
+        <div class="proto-card"><div class="proto-title">On-site poster</div><div class="proto-desc">An illustrative poster explaining the concept, how to interact, and what kinds of kindness are available.</div></div>
+      </div>
+      <figure class="domain-model-figure">
+        <img src="images/kindness-box.jpg" alt="High-fidelity prototype visualisation of the Kindness Box" />
+      </figure>
+      <div style="margin-top:16px;">
+        <a href="https://www.figma.com/proto/9oxCXqq7vM7SVvMCs9c6O8/High-fidelity-Template?page-id=0%3A1&node-id=39-11&viewport=348%2C48%2C0.5&scaling=scale-down&starting-point-node-id=39%3A8&show-proto-sidebar=1" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:500;color:var(--black);text-decoration:none;border-bottom:1px solid var(--black);padding-bottom:2px;">View interactive Figma prototype ↗</a>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>What I learned</h2>
+      <div class="reflections">
+        <div class="reflection">
+          <div class="reflection-label">On designing for emotional context, not just task completion</div>
+          <p>The most important insight from our user journeys wasn't about features. It was about timing. The Kindness Box needed to appear at a moment of emotional low, not just as a passive fixture. The motion sensor and floor stickers exist to intercept people before they've fully disengaged from the space.</p>
+        </div>
+        <div class="reflection">
+          <div class="reflection-label">On the value of low-fidelity field prototyping</div>
+          <p>The cardboard box placed at King's Cross generated more actionable data than any interview question could have. Real people in the real space, reacting spontaneously, told us what kindness meant to them in a way that no studio session replicates. It also validated the vending machine metaphor, which could have felt gimmicky, as genuinely resonant with how people thought about the exchange.</p>
+        </div>
+        <div class="reflection">
+          <div class="reflection-label">On designing for both sides of an interaction</div>
+          <p>Designing for a "giver" and a "receiver" simultaneously created productive tension throughout the project. Every feature had to work for Helen, who wanted to do something meaningful, and for John, who was depleted and needed a low-effort path to receiving warmth. The four kindness categories emerged directly from holding both user needs in parallel.</p>
+        </div>
+        <div class="reflection">
+          <div class="reflection-label">On making kindness feel appropriate in a public space</div>
+          <p>Participants struggled to associate kindness with King's Cross. The design response was to create an artefact that physically embodies warmth: the iridescent holographic aesthetic, the "Hey." on the front, the floor stickers that address you directly. The Box needed to transform the emotional character of the space before anyone even touched it.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Skills demonstrated</h2>
+      <div class="skill-tags">
+        <span class="skill-tag">Field observation</span>
+        <span class="skill-tag">User interviews</span>
+        <span class="skill-tag">Persona creation</span>
+        <span class="skill-tag">Emotional journey mapping</span>
+        <span class="skill-tag">Conceptual prototyping</span>
+        <span class="skill-tag">Hi-fi prototyping</span>
+        <span class="skill-tag">Interaction design</span>
+        <span class="skill-tag">Service design</span>
+        <span class="skill-tag">Research synthesis</span>
+        <span class="skill-tag">Team collaboration</span>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<div id="lightbox" class="lightbox" aria-hidden="true">
+  <div class="lightbox-panel" role="dialog" aria-modal="true" aria-label="Expanded image preview">
+    <div class="lightbox-img-wrap">
+      <img id="lightbox-image" src="" alt="" />
+    </div>
+    <div class="lightbox-caption">
+      <span>Scroll to zoom · Drag to pan · Esc to close</span>
+      <button class="lightbox-close" type="button" aria-label="Close image preview">Close</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-cta">
+      <h2>Let's create your next big idea.</h2>
+      <a href="https://calendly.com/ericasaffron/initial-consultation">Schedule a call →</a>
+    </div>
+    <ul class="footer-nav">
+      <li><a href="https://ericasaffron.com/index.html">Home</a></li>
+      <li><a href="https://ericasaffron.com/portfolio.html">Case studies</a></li>
+      <li><a href="https://ericasaffron.com/about.html">About</a></li>
+      <li><a href="https://ericasaffron.com/contact.html">Contact</a></li>
+    </ul>
+    <p class="footer-copy">© 2026 Erica Saffron</p>
+  </div>
+</footer>
+<script src="js/nav.js"></script>
+<script>
+  (function () {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightbox-image');
+    const closeButton = document.querySelector('.lightbox-close');
+    const zoomableImages = document.querySelectorAll('.wf-visual img, .domain-model-figure img');
+
+    const MIN_SCALE = 1, MAX_SCALE = 5;
+    let scale = 1, panX = 0, panY = 0;
+    let isDragging = false, didDrag = false;
+    let dragStartX = 0, dragStartY = 0, panStartX = 0, panStartY = 0;
+
+    function applyTransform() {
+      lightboxImage.style.transform = 'scale(' + scale + ') translate(' + panX + 'px,' + panY + 'px)';
+    }
+
+    function resetZoom() {
+      scale = 1; panX = 0; panY = 0;
+      applyTransform();
+      lightboxImage.classList.remove('lb-zoomed', 'lb-dragging');
+    }
+
+    function closeLightbox() {
+      resetZoom();
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    function openLightbox(image) {
+      resetZoom();
+      lightboxImage.src = image.getAttribute('src');
+      lightboxImage.alt = image.getAttribute('alt') || '';
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    lightboxImage.addEventListener('wheel', function (e) {
+      e.preventDefault();
+      const factor = e.deltaY < 0 ? 1.15 : 1 / 1.15;
+      scale = Math.min(MAX_SCALE, Math.max(MIN_SCALE, scale * factor));
+      if (scale <= 1) { scale = 1; panX = 0; panY = 0; }
+      applyTransform();
+      lightboxImage.classList.toggle('lb-zoomed', scale > 1);
+    }, { passive: false });
+
+    lightboxImage.addEventListener('click', function () {
+      if (didDrag) { didDrag = false; return; }
+      if (scale > 1) { resetZoom(); } else { scale = 2; applyTransform(); lightboxImage.classList.add('lb-zoomed'); }
+    });
+
+    lightboxImage.addEventListener('mousedown', function (e) {
+      if (scale <= 1) return;
+      isDragging = true; didDrag = false;
+      dragStartX = e.clientX; dragStartY = e.clientY;
+      panStartX = panX; panStartY = panY;
+      lightboxImage.classList.add('lb-dragging');
+      e.preventDefault();
+    });
+
+    document.addEventListener('mousemove', function (e) {
+      if (!isDragging) return;
+      const dx = (e.clientX - dragStartX) / scale;
+      const dy = (e.clientY - dragStartY) / scale;
+      if (Math.abs(dx) > 2 || Math.abs(dy) > 2) didDrag = true;
+      panX = panStartX + dx; panY = panStartY + dy;
+      applyTransform();
+    });
+
+    document.addEventListener('mouseup', function () {
+      if (!isDragging) return;
+      isDragging = false;
+      lightboxImage.classList.remove('lb-dragging');
+    });
+
+    zoomableImages.forEach(function (img) {
+      img.addEventListener('click', function () { openLightbox(img); });
+    });
+
+    lightbox.addEventListener('click', function (e) {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    closeButton.addEventListener('click', closeLightbox);
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Information Architecture: Skincare Website | Erica Saffron</title>
+<meta name="description" content="A full IA project for a skincare e-commerce and community platform, from domain research and card sorting to sitemap, user journey, and wireframes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0a0a0a;
+    --gray-600: #555;
+    --gray-400: #767676;
+    --gray-200: #e8e8e8;
+    --gray-100: #f5f5f5;
+    --white: #fff;
+    --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --max: 1100px;
+    --content: 700px;
+  }
+
+  html { font-size: 16px; }
+  body { font-family: var(--font); background: var(--white); color: var(--black); -webkit-font-smoothing: antialiased; }
+
+  .page { max-width: var(--max); margin: 0 auto; padding: 0 40px; }
+  .content { max-width: var(--content); }
+
+  .hero { padding: 60px 0 48px; border-bottom: 1px solid var(--gray-200); }
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--gray-600); text-decoration: none; margin-bottom: 28px; transition: color 0.15s; }
+  .back-link:hover { color: var(--black); }
+  .back-link::before { content: '←'; }
+  .hero-layout { display: grid; grid-template-columns: 1fr 220px; gap: 48px; align-items: start; }
+  .hero h1 { font-size: clamp(32px, 5vw, 48px); font-weight: 700; letter-spacing: -1px; line-height: 1.1; margin-bottom: 16px; }
+  .hero-desc { font-size: 16px; color: var(--gray-600); line-height: 1.7; }
+  .meta-table { width: 100%; border-top: 1px solid var(--gray-200); padding-top: 20px; }
+  .meta-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--gray-200); font-size: 13px; }
+  .meta-label { color: var(--gray-400); }
+  .meta-value { color: var(--black); font-weight: 500; text-align: right; }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+  .tag { font-size: 12px; border: 1px solid var(--gray-200); color: var(--gray-600); padding: 4px 12px; border-radius: 100px; }
+
+  .sections { padding: 60px 0; }
+  .section { margin-bottom: 56px; }
+  .section h2 { font-size: 22px; font-weight: 600; letter-spacing: -0.3px; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--gray-200); }
+  .section h3 { font-size: 16px; font-weight: 600; margin: 24px 0 8px; }
+  .section p { font-size: 15px; line-height: 1.75; color: var(--gray-600); margin-bottom: 14px; }
+  .section p:last-child { margin-bottom: 0; }
+
+  .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 1px; background: var(--gray-200); border: 1px solid var(--gray-200); border-radius: 8px; overflow: hidden; margin: 20px 0 28px; }
+  .stat { background: var(--white); padding: 20px 16px; }
+  .stat-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray-400); margin-bottom: 6px; }
+  .stat-value { font-size: 28px; font-weight: 700; letter-spacing: -1px; color: var(--black); line-height: 1; }
+  .stat-desc { font-size: 12px; color: var(--gray-600); margin-top: 4px; line-height: 1.4; }
+
+  .deliverable-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 16px 0 8px; }
+  .deliverable { border: 1px solid var(--gray-200); border-radius: 8px; padding: 16px; }
+  .deliverable-title { font-size: 13px; font-weight: 600; color: var(--black); margin-bottom: 4px; }
+  .deliverable-desc { font-size: 12px; color: var(--gray-600); line-height: 1.5; }
+
+  .insight { border-left: 3px solid var(--black); padding: 12px 0 12px 20px; margin: 20px 0; }
+  .insight-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-400); margin-bottom: 6px; }
+  .insight p { font-size: 14px; color: var(--gray-600); line-height: 1.65; margin: 0; }
+  .domain-model-figure,
+  .sitemap-figure,
+  .user-journey-figure {
+    margin: 18px auto 0;
+    max-width: 760px;
+  }
+  .domain-model-figure img,
+  .sitemap-figure img,
+  .user-journey-figure img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    object-fit: contain;
+    border: 1px solid var(--gray-200);
+    border-radius: 12px;
+    background: var(--white);
+    cursor: zoom-in;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+
+  .wf-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; align-items: stretch; margin: 18px 0 0; }
+  .wf-card { display: flex; flex-direction: column; height: 100%; background: var(--white); border: 1px solid var(--gray-200); border-radius: 14px; padding: 18px; box-shadow: 0 8px 24px rgba(10, 10, 10, 0.04); }
+  .wf-visual { margin-bottom: 12px; border: 1px solid var(--gray-200); border-radius: 12px; overflow: hidden; background: var(--gray-100); }
+  .wf-visual img { width: 100%; aspect-ratio: 16 / 10; object-fit: contain; display: block; background: var(--white); cursor: zoom-in; transition: transform 0.18s ease, opacity 0.18s ease; }
+  .wf-visual img:hover { transform: scale(1.02); opacity: 0.96; }
+  .wf-copy { display: flex; flex-direction: column; gap: 8px; flex: 1; }
+  .wf-num { display: inline-flex; align-items: center; width: fit-content; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-400); background: var(--gray-100); border: 1px solid var(--gray-200); border-radius: 999px; padding: 6px 10px; }
+  .wf-name { font-size: 15px; font-weight: 600; color: var(--black); line-height: 1.35; }
+  .wf-focus { font-size: 13px; color: var(--gray-600); line-height: 1.6; margin: 0; }
+
+  .lightbox { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; padding: 20px; background: rgba(10, 10, 10, 0.78); z-index: 1200; }
+  .lightbox.open { display: flex; }
+  .lightbox-panel { width: min(1080px, 96vw); max-height: 92vh; background: var(--white); border: 1px solid var(--gray-200); border-radius: 18px; padding: 10px; box-shadow: 0 18px 60px rgba(10, 10, 10, 0.25); display: flex; flex-direction: column; }
+  .lightbox-img-wrap { overflow: hidden; border-radius: 12px; background: var(--white); flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; }
+  .lightbox-panel img { display: block; width: 100%; max-height: 78vh; object-fit: contain; background: var(--white); cursor: zoom-in; transform-origin: center center; user-select: none; -webkit-user-drag: none; }
+  .lightbox-panel img.lb-zoomed { cursor: grab; }
+  .lightbox-panel img.lb-dragging { cursor: grabbing; }
+  .lightbox-caption { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 4px 4px; font-size: 13px; color: var(--gray-600); flex-shrink: 0; }
+  .lightbox-close { border: 1px solid var(--gray-200); background: var(--gray-100); color: var(--black); border-radius: 999px; padding: 6px 10px; font-size: 12px; cursor: pointer; }
+
+  .reflections { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+  .reflection { background: var(--gray-100); border-radius: 8px; padding: 20px 24px; }
+  .reflection-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-400); margin-bottom: 8px; }
+  .reflection p { font-size: 14px; color: var(--gray-600); line-height: 1.7; margin: 0; }
+
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .skill-tag { font-size: 13px; background: var(--gray-100); color: var(--gray-600); padding: 6px 14px; border-radius: 100px; }
+
+  footer { border-top: 1px solid var(--gray-200); padding: 60px 40px 40px; }
+  .footer-inner { max-width: var(--max); margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 32px; }
+  .footer-cta { text-align: center; }
+  .footer-cta h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 700; letter-spacing: -0.5px; margin-bottom: 20px; }
+  .footer-cta a { display: inline-block; background: var(--black); color: var(--white); text-decoration: none; font-size: 14px; font-weight: 500; padding: 14px 28px; border-radius: 100px; transition: opacity 0.15s; }
+  .footer-cta a:hover { opacity: 0.8; }
+  .footer-nav { display: flex; gap: 32px; list-style: none; }
+  .footer-nav a { font-size: 13px; color: var(--gray-600); text-decoration: none; }
+  .footer-nav a:hover { color: var(--black); }
+  .footer-copy { font-size: 12px; color: var(--gray-400); }
+
+  @media (max-width: 680px) {
+    nav { padding: 0 20px; }
+    .page { padding: 0 20px; }
+    .hero-layout { grid-template-columns: 1fr; }
+    .wf-grid { grid-template-columns: 1fr; gap: 14px; }
+    footer { padding: 40px 20px; }
+    .footer-nav { flex-wrap: wrap; gap: 20px; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Erica Saffron home">
+        <img src="images/logo-black.jpg" alt="Erica Saffron" style="width:40px;height:40px;border-radius:999px;object-fit:cover;display:block;">
+      </a>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="portfolio.html">Case studies</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="nav__toggle" id="navToggle" type="button" aria-label="Toggle navigation menu" aria-controls="navLinks" aria-expanded="false" aria-haspopup="true">
+        <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+      </button>
+    </div>
+  </nav>
+
+<main id="main" class="page">
+
+  <div class="hero">
+    <a href="portfolio.html" class="back-link">All case studies</a>
+    <div class="hero-layout">
+      <div>
+        <div class="tags">
+          <span class="tag">Information Architecture</span>
+          <span class="tag">UX Research</span>
+          <span class="tag">Card Sorting</span>
+          <span class="tag">Wireframing</span>
+        </div>
+        <h1>Information Architecture: Skincare Website</h1>
+        <p class="hero-desc">A full IA project for a skincare e-commerce and community platform, from domain research and card sorting to sitemap, user journey, and annotated wireframes for four key page types.</p>
+        <div class="about-hero__image-wrap" style="margin-top:28px;width:100%;">
+          <img src="images/skincare-image.jpg" alt="Erica Saffron" style="width:100%;height:300px;border-radius:24px;display:block;object-fit:cover;">
+        </div>
+      </div>
+      <div class="meta-table">
+        <div class="meta-row"><span class="meta-label">Role</span><span class="meta-value">UX Researcher &amp; Designer</span></div>
+        <div class="meta-row"><span class="meta-label">Context</span><span class="meta-value">INM401 MSc HCID, Information Architecture module</span></div>
+        <div class="meta-row"><span class="meta-label">Methods</span><span class="meta-value">Interviews, card sorting, competitor analysis</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sections content">
+
+    <div class="section">
+      <h2>Overview</h2>
+      <p>This project asked me to design the information architecture for a skincare website aimed at young adults with acne, starting from scratch. Rather than jumping straight into structure, I started with research to understand the domain, the users, and how existing skincare websites organise their content. The deliverables spanned the full IA process.</p>
+      <div class="stat-grid">
+        <div class="stat"><div class="stat-label">Interviews</div><div class="stat-value">3+</div><div class="stat-desc">Domain experts &amp; skincare consumers</div></div>
+        <div class="stat"><div class="stat-label">Card sort</div><div class="stat-value">5</div><div class="stat-desc">Participants on OptimalWorkshop</div></div>
+        <div class="stat"><div class="stat-label">Competitor sites</div><div class="stat-value">4</div><div class="stat-desc">Analysed for navigation patterns</div></div>
+        <div class="stat"><div class="stat-label">Wireframes</div><div class="stat-value">4</div><div class="stat-desc">Annotated page-level wireframes</div></div>
+      </div>
+      <div class="deliverable-grid">
+        <div class="deliverable"><div class="deliverable-title">Domain model</div><div class="deliverable-desc">Entities, relationships, and vocabulary of the skincare space</div></div>
+        <div class="deliverable"><div class="deliverable-title">Sitemap</div><div class="deliverable-desc">Full navigation structure with faceted filters and global nav</div></div>
+        <div class="deliverable"><div class="deliverable-title">User journey</div><div class="deliverable-desc">Task flow for finding and saving a product</div></div>
+        <div class="deliverable"><div class="deliverable-title">Wireframes</div><div class="deliverable-desc">Four annotated page types covering core user tasks</div></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Domain model</h2>
+      <p>To understand the skincare domain, I interviewed three domain experts and analysed four competitor skincare websites and blogs. The goal was to map out the key entities, relationships, and vocabulary before touching any structure.</p>
+      <p>The domain model centred on Skincare as the main entity, with three important clusters branching from it: Skincare Products (with their ingredients, product types, and reviews), Skincare Consumers (defined by skin type, skin concern, and routine), and Skincare Routines (morning and night-time). Dermatologists and community forums emerged as secondary actors that feed into how consumers find and evaluate products.</p>
+      <div class="insight">
+        <div class="insight-label">Research insight</div>
+        <p>Skin concerns, particularly acne, blemishes, and anti-aging, were the dominant way users described their relationship to products. This suggested that skin concern should be a primary navigation axis, not just a filter.</p>
+      </div>
+      <figure class="domain-model-figure">
+        <img src="images/domain-model.jpg" alt="Domain model diagram for the skincare website" />
+      </figure>
+    </div>
+
+    <div class="section">
+      <h2>Sitemap</h2>
+      <p>I reviewed terminology across several skincare websites from my interviews and used the most commonly understood labels to design an open card sorting exercise on OptimalWorkshop with five participants. This helped me validate labels and group structures before building the sitemap.</p>
+      <p>The resulting sitemap organises the site into seven top-level sections: Skin 101 (education), Shop Skincare, Skin Quiz, Routine Builder, Skin Talk (community forum), Blog, and User Profile. The Shop Skincare section uses faceted navigation, allowing users to filter by product type, brand, key ingredients, skin type, skin concerns, SPF content, price range, and average reviews.</p>
+      <div class="insight">
+        <div class="insight-label">Design decision</div>
+        <p>Including a dedicated Routine Builder and Skin Quiz in the global nav, rather than burying them as features, reflects how users in interviews described their main goals: understanding their skin type and building a routine, not just browsing products.</p>
+      </div>
+      <figure class="sitemap-figure">
+        <img src="images/sitemap.jpg" alt="Sitemap diagram for the skincare website" />
+      </figure>
+    </div>
+
+    <div class="section">
+      <h2>User journey</h2>
+      <p>For the user journey, I chose the task: find a chemical exfoliator for acne from The Ordinary, then save it to favourites. I selected this task because it exercises global navigation, filtered search, and the user account system in a single flow, giving a meaningful end-to-end view of how the IA performs under real use.</p>
+      <p>The journey maps the path from the home page through the Shop Skincare section, applying filters, landing on a product page, and saving it via the favourites icon. Decision points around search versus browsed navigation are captured as branches in the flow.</p>
+      <figure class="user-journey-figure">
+        <img src="images/user-journey.jpg" alt="User journey diagram for the skincare website" />
+      </figure>
+    </div>
+
+    <div class="section">
+      <h2>Wireframes</h2>
+      <p>Each wireframe was designed to reflect a specific research finding. All pages include a persistent breadcrumb trail and a global search bar, since users in interviews often searched by ingredient or brand name rather than browsing category trees.</p>
+      <div class="wf-grid">
+        <div class="wf-card">
+          <figure class="wf-visual"><img src="images/wireframe-1-skin-101.jpg" alt="Wireframe 1: Skin 101 educational page" /></figure>
+          <div class="wf-copy">
+            <div class="wf-num">Wireframe 1</div>
+            <div class="wf-name">Skin 101: educational page</div>
+            <p class="wf-focus">Vertical left-hand navigation for scanning articles. Auto-generated related products and blog recommendations. Pagination with "Next page" labels so users know what's coming.</p>
+          </div>
+        </div>
+        <div class="wf-card">
+          <figure class="wf-visual"><img src="images/wireframe-2-shop-skincare.jpg" alt="Wireframe 2: Shop Skincare results page" /></figure>
+          <div class="wf-copy">
+            <div class="wf-num">Wireframe 2</div>
+            <div class="wf-name">Shop Skincare: results page</div>
+            <p class="wf-focus">Faceted left-side navigation. Active filters shown as pills above results with individual clear options. Sort by popularity, price, and rating.</p>
+          </div>
+        </div>
+        <div class="wf-card">
+          <figure class="wf-visual"><img src="images/wireframe-3-product-detail.jpg" alt="Wireframe 3: Product detail page" /></figure>
+          <div class="wf-copy">
+            <div class="wf-num">Wireframe 3</div>
+            <div class="wf-name">Product detail page</div>
+            <p class="wf-focus">Review section prioritised, since interviews showed users always read reviews before buying. Star rating breakdown, sort by Most Helpful, and "Other Customers Also Bought" recommendations.</p>
+          </div>
+        </div>
+        <div class="wf-card">
+          <figure class="wf-visual"><img src="images/wireframe-4-skin-talk.jpg" alt="Wireframe 4: Skin Talk community forum" /></figure>
+          <div class="wf-copy">
+            <div class="wf-num">Wireframe 4</div>
+            <div class="wf-name">Skin Talk: community forum</div>
+            <p class="wf-focus">Search-first design based on how users described using platforms like Reddit, browsing by keyword, not category. Search by thread, tag, member name, or date range.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>What I learned</h2>
+      <div class="reflections">
+        <div class="reflection">
+          <div class="reflection-label">On letting research drive structure</div>
+          <p>The card sort directly changed my sitemap. My initial instinct was to organise products by category (moisturisers, serums, etc.), but participants consistently grouped by skin concern first. This shifted "Shop by Skin Concern" from a secondary filter to a top-level navigation option.</p>
+        </div>
+        <div class="reflection">
+          <div class="reflection-label">On the difference between labels and structure</div>
+          <p>Competitor analysis showed that "Skin Talk," "Community," and "Forums" all describe the same thing, but users in the card sort recognised "Skin Talk" as more specific and welcoming for a skincare audience. Labels carry tone, not just meaning.</p>
+        </div>
+        <div class="reflection">
+          <div class="reflection-label">On designing for findability vs discoverability</div>
+          <p>Faceted navigation solves findability: users who know what they want can drill down fast. But the Skin Quiz and Routine Builder address discoverability for users who don't yet know what they need. Having both in global nav was a deliberate choice to serve both mental models.</p>
+        </div>
+        <div class="reflection">
+          <div class="reflection-label">On reviews as a trust signal</div>
+          <p>Every participant in the consumer interviews mentioned checking reviews before buying. This made the review section on the product page a primary content area, not an afterthought, with multiple sort options, a rating breakdown, and a helpful/not helpful voting system.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Skills demonstrated</h2>
+      <div class="skill-tags">
+        <span class="skill-tag">Domain modelling</span>
+        <span class="skill-tag">Open card sorting</span>
+        <span class="skill-tag">OptimalWorkshop</span>
+        <span class="skill-tag">Competitor analysis</span>
+        <span class="skill-tag">Expert interviews</span>
+        <span class="skill-tag">Sitemap design</span>
+        <span class="skill-tag">Faceted navigation</span>
+        <span class="skill-tag">User journey mapping</span>
+        <span class="skill-tag">Annotated wireframing</span>
+        <span class="skill-tag">Research-led design</span>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<div id="lightbox" class="lightbox" aria-hidden="true">
+  <div class="lightbox-panel" role="dialog" aria-modal="true" aria-label="Expanded wireframe preview">
+    <div class="lightbox-img-wrap">
+      <img id="lightbox-image" src="" alt="" />
+    </div>
+    <div class="lightbox-caption">
+      <span id="lightbox-label">Scroll to zoom · Drag to pan · Esc to close</span>
+      <button class="lightbox-close" type="button" aria-label="Close image preview">Close</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-cta">
+      <h2>Let's create your next big idea.</h2>
+      <a href="https://calendly.com/ericasaffron/initial-consultation">Schedule a call →</a>
+    </div>
+    <ul class="footer-nav">
+      <li><a href="https://ericasaffron.com/index.html">Home</a></li>
+      <li><a href="https://ericasaffron.com/portfolio.html">Case studies</a></li>
+      <li><a href="https://ericasaffron.com/about.html">About</a></li>
+      <li><a href="https://ericasaffron.com/contact.html">Contact</a></li>
+    </ul>
+    <p class="footer-copy">© 2026 Erica Saffron</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightbox-image');
+    const closeButton = document.querySelector('.lightbox-close');
+    const wireframeImages = document.querySelectorAll('.wf-visual img, .domain-model-figure img, .sitemap-figure img, .user-journey-figure img');
+
+    const MIN_SCALE = 1, MAX_SCALE = 5;
+    let scale = 1, panX = 0, panY = 0;
+    let isDragging = false, didDrag = false;
+    let dragStartX = 0, dragStartY = 0, panStartX = 0, panStartY = 0;
+
+    function applyTransform() {
+      lightboxImage.style.transform = 'scale(' + scale + ') translate(' + panX + 'px,' + panY + 'px)';
+    }
+
+    function resetZoom() {
+      scale = 1; panX = 0; panY = 0;
+      applyTransform();
+      lightboxImage.classList.remove('lb-zoomed', 'lb-dragging');
+    }
+
+    function closeLightbox() {
+      if (!lightbox) return;
+      resetZoom();
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    function openLightbox(image) {
+      if (!lightbox || !lightboxImage) return;
+      resetZoom();
+      lightboxImage.src = image.getAttribute('src');
+      lightboxImage.alt = image.getAttribute('alt') || 'Expanded wireframe preview';
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Scroll wheel to zoom
+    lightboxImage.addEventListener('wheel', function (e) {
+      e.preventDefault();
+      const factor = e.deltaY < 0 ? 1.15 : 1 / 1.15;
+      scale = Math.min(MAX_SCALE, Math.max(MIN_SCALE, scale * factor));
+      if (scale <= 1) { scale = 1; panX = 0; panY = 0; }
+      applyTransform();
+      lightboxImage.classList.toggle('lb-zoomed', scale > 1);
+    }, { passive: false });
+
+    // Click to toggle 1x / 2x zoom
+    lightboxImage.addEventListener('click', function () {
+      if (didDrag) { didDrag = false; return; }
+      if (scale > 1) {
+        resetZoom();
+      } else {
+        scale = 2; panX = 0; panY = 0;
+        applyTransform();
+        lightboxImage.classList.add('lb-zoomed');
+      }
+    });
+
+    // Drag to pan
+    lightboxImage.addEventListener('mousedown', function (e) {
+      if (scale <= 1) return;
+      isDragging = true; didDrag = false;
+      dragStartX = e.clientX; dragStartY = e.clientY;
+      panStartX = panX; panStartY = panY;
+      lightboxImage.classList.add('lb-dragging');
+      e.preventDefault();
+    });
+
+    document.addEventListener('mousemove', function (e) {
+      if (!isDragging) return;
+      const dx = (e.clientX - dragStartX) / scale;
+      const dy = (e.clientY - dragStartY) / scale;
+      if (Math.abs(dx) > 2 || Math.abs(dy) > 2) didDrag = true;
+      panX = panStartX + dx; panY = panStartY + dy;
+      applyTransform();
+    });
+
+    document.addEventListener('mouseup', function () {
+      if (!isDragging) return;
+      isDragging = false;
+      lightboxImage.classList.remove('lb-dragging');
+    });
+
+    wireframeImages.forEach(function (image) {
+      image.addEventListener('click', function () { openLightbox(image); });
+    });
+
+    if (lightbox) {
+      lightbox.addEventListener('click', function (e) {
+        if (e.target === lightbox) closeLightbox();
+      });
+    }
+
+    if (closeButton) closeButton.addEventListener('click', closeLightbox);
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  })();
+</script>
+<script src="js/nav.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Studies | Erica Saffron</title>
+  <meta name="description" content="UX research and design case studies by Erica Saffron, covering participatory design, information architecture, interaction design, and more.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .project-card[data-category] { transition: opacity 0.2s, transform 0.2s; }
+    .project-card.hidden { display: none; }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <nav class="nav">
+    <div class="nav__inner">
+            <a href="index.html" class="nav__logo" aria-label="Erica Saffron home">
+        <img src="images/logo-black.jpg" alt="Erica Saffron" style="width:40px;height:40px;border-radius:999px;object-fit:cover;display:block;">
+      </a>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="portfolio.html" class="active">Case studies</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="nav__toggle" id="navToggle" type="button" aria-label="Toggle navigation menu" aria-controls="navLinks" aria-expanded="false" aria-haspopup="true">
+        <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+      </button>
+    </div>
+  </nav>
+
+  <main id="main">
+
+    <section class="portfolio-hero">
+      <div class="container">
+        <h1>Case Studies</h1>
+        <p>I've had the opportunity to collaborate with a range of amazing teams and projects. Here are some of the works I'm most proud of.</p>
+      </div>
+    </section>
+
+    <section style="padding: 0 0 80px;">
+      <div class="container">
+
+        <!-- Filter -->
+        <div class="portfolio-filter" id="filterBar">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="ux-research">UX Research</button>
+          <button class="filter-btn" data-filter="interaction">Interaction Design</button>
+          <button class="filter-btn" data-filter="ui-ux">UI/UX</button>
+          <button class="filter-btn" data-filter="graphic">Graphic Design</button>
+        </div>
+
+        <div class="projects-grid" id="projectsGrid">
+
+          <a href="https://www.playfifaheroes.com/" target="_blank" rel="noopener" class="project-card" data-category="ui-ux">
+            <div class="project-card__thumb" style="background:#0a0a0a;">
+              <img src="images/fifa-heros-thumb.jpg" alt="FIFA Heros" onerror="this.style.display='none'">
+            </div>
+            <div class="project-card__body">
+              <div class="tag-group" style="margin-bottom:10px;">
+                <span class="tag">UI/UX</span>
+              </div>
+              <div class="project-card__title">FIFA Heros</div>
+              <p style="font-size:14px;color:var(--gray-600);line-height:1.6;">UI/UX design for FIFA Heroes, the officially licensed FIFA 5v5 mobile football game.</p>
+              <div class="project-card__arrow">View project ↗</div>
+            </div>
+          </a>
+
+          <a href="https://livelystudio.com/insight-opinion-and-news/warped-kart-racer-avp/" target="_blank" rel="noopener" class="project-card" data-category="ui-ux interaction">
+            <div class="project-card__thumb" style="background:#e8eaf0;">
+              <img src="images/warped-kart-AP-thumb.jpg" alt="Warped Kart Racers for Apple Vision Pro" onerror="this.style.display='none'">
+            </div>
+            <div class="project-card__body">
+              <div class="tag-group" style="margin-bottom:10px;">
+                <span class="tag">UI/UX</span>
+                <span class="tag">Mixed Reality</span>
+              </div>
+              <div class="project-card__title">Warped Kart Racers for Apple Vision Pro</div>
+              <p style="font-size:14px;color:var(--gray-600);line-height:1.6;">UI/UX design for the first kart racing game on Apple Vision Pro.</p>
+              <div class="project-card__arrow">View project ↗</div>
+            </div>
+          </a>
+
+          <a href="https://electricsquare.com/games/warped-kart-racers/" target="_blank" rel="noopener" class="project-card" data-category="ui-ux interaction">
+            <div class="project-card__thumb" style="background:#e8eaf0;">
+              <img src="images/warped-kart-thumb.jpg" alt="Warped Kart Racers for iOS" onerror="this.style.display='none'">
+            </div>
+            <div class="project-card__body">
+              <div class="tag-group" style="margin-bottom:10px;">
+                <span class="tag">UI/UX</span>
+                <span class="tag">iOS</span>
+              </div>
+              <div class="project-card__title">Warped Kart Racers</div>
+              <p style="font-size:14px;color:var(--gray-600);line-height:1.6;">UI/UX design for the iOS kart racing game from Electric Square.</p>
+              <div class="project-card__arrow">View project ↗</div>
+            </div>
+          </a>
+
+          <a href="https://electricsquare.com/games/need-for-speed-unbound/" target="_blank" rel="noopener" class="project-card" data-category="ui-ux">
+            <div class="project-card__thumb" style="background:#0a0a0a;">
+              <img src="images/nfs-thumb.jpg" alt="Need for Speed Unbound" onerror="this.style.display='none'">
+            </div>
+            <div class="project-card__body">
+              <div class="tag-group" style="margin-bottom:10px;">
+                <span class="tag">UI/UX</span>
+                <span class="tag">Vector Graphics</span>
+              </div>
+              <div class="project-card__title">Need for Speed Unbound</div>
+              <p style="font-size:14px;color:var(--gray-600);line-height:1.6;">UI/UX and vector graphics for EA's flagship racing franchise at Electric Square.</p>
+              <div class="project-card__arrow">View project ↗</div>
+            </div>
+          </a>
+
+                    <a href="kindness-box.html" class="project-card" data-category="ux-research interaction">
+            <div class="project-card__thumb" style="background:#f0ede8;">
+              <img src="images/kindness-box-thumb.jpg" alt="The Kindness Box" onerror="this.style.display='none'">
+            </div>
+            <div class="project-card__body">
+              <div class="tag-group" style="margin-bottom:10px;">
+                <span class="tag">UX Research</span>
+                <span class="tag">Interaction Design</span>
+                <span class="tag">Prototyping</span>
+              </div>
+              <div class="project-card__title">The Kindness Box</div>
+              <p style="font-size:14px;color:var(--gray-600);line-height:1.6;">Designing an interactive vending machine to promote acts of kindness at King's Cross Station.</p>
+              <div class="project-card__arrow">View case study →</div>
+            </div>
+          </a>
+
+          <a href="information-architecture.html" class="project-card" data-category="ux-research">
+            <div class="project-card__thumb" style="background:#fce8e6;">
+              <img src="images/ia-thumb.jpg" alt="Information Architecture" onerror="this.style.display='none'">
+            </div>
+            <div class="project-card__body">
+              <div class="tag-group" style="margin-bottom:10px;">
+                <span class="tag">UX Research</span>
+                <span class="tag">Information Architecture</span>
+              </div>
+              <div class="project-card__title">Information Architecture: Skincare Website</div>
+              <p style="font-size:14px;color:var(--gray-600);line-height:1.6;">Full IA project covering domain model, card sorting, sitemap, and wireframes for a skincare platform.</p>
+              <div class="project-card__arrow">View case study →</div>
+            </div>
+          </a>
+
+          <a href="participatory-design.html" class="project-card" data-category="ux-research">
+            <div class="project-card__thumb" style="background:#e8f0e8;">
+              <img src="images/farm-thumb.jpg" alt="Magical Farm Workshop" onerror="this.style.display='none'">
+            </div>
+            <div class="project-card__body">
+              <div class="tag-group" style="margin-bottom:10px;">
+                <span class="tag">UX Research</span>
+                <span class="tag">Participatory Design</span>
+              </div>
+              <div class="project-card__title">Magical Farm Workshop</div>
+              <p style="font-size:14px;color:var(--gray-600);line-height:1.6;">Community co-design at Spitalfields City Farm using Lego Serious Play to surface insights.</p>
+              <div class="project-card__arrow">View case study →</div>
+            </div>
+          </a>
+
+          <a href="https://www.artstation.com/artwork/g8GXOL" target="_blank" rel="noopener" class="project-card" data-category="graphic">
+            <div class="project-card__thumb" style="background:#f5f0e8;">
+              <img src="images/drbarkers-thumb.jpg" alt="Dr. Barker's" onerror="this.style.display='none'">
+            </div>
+            <div class="project-card__body">
+              <div class="tag-group" style="margin-bottom:10px;">
+                <span class="tag">Graphic Design</span>
+                <span class="tag">Packaging</span>
+              </div>
+              <div class="project-card__title">Dr. Barker's</div>
+              <p style="font-size:14px;color:var(--gray-600);line-height:1.6;">Packaging design for a premium pet care brand, covering identity, colour, and print-ready artwork.</p>
+              <div class="project-card__arrow">View on ArtStation ↗</div>
+            </div>
+          </a>
+
+          <a href="https://www.artstation.com/artwork/VyD9VP" target="_blank" rel="noopener" class="project-card" data-category="graphic">
+            <div class="project-card__thumb" style="background:#e8eef5;">
+              <img src="images/worldcities-thumb.jpg" alt="World Cities poster" onerror="this.style.display='none'">
+            </div>
+            <div class="project-card__body">
+              <div class="tag-group" style="margin-bottom:10px;">
+                <span class="tag">Graphic Design</span>
+                <span class="tag">Poster Design</span>
+              </div>
+              <div class="project-card__title">World Cities</div>
+              <p style="font-size:14px;color:var(--gray-600);line-height:1.6;">Illustrated poster series exploring iconic world cities through typographic and visual identity.</p>
+              <div class="project-card__arrow">View on ArtStation ↗</div>
+            </div>
+          </a>
+
+          <a href="https://www.artstation.com/artwork/YKbEyb" target="_blank" rel="noopener" class="project-card" data-category="graphic">
+            <div class="project-card__thumb" style="background:#f0f5e8;">
+              <img src="images/totoro-thumb.jpg" alt="Totoro Poster" onerror="this.style.display='none'">
+            </div>
+            <div class="project-card__body">
+              <div class="tag-group" style="margin-bottom:10px;">
+                <span class="tag">Graphic Design</span>
+                <span class="tag">Illustration</span>
+              </div>
+              <div class="project-card__title">Totoro Poster</div>
+              <p style="font-size:14px;color:var(--gray-600);line-height:1.6;">Fan art poster for Studio Ghibli's My Neighbour Totoro, made with digital illustration and print design.</p>
+              <div class="project-card__arrow">View on ArtStation ↗</div>
+            </div>
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+    <div class="footer-cta">
+      <div class="container">
+        <h2 class="footer-cta__heading">Let's create your<br>next big idea.</h2>
+        <a href="https://calendly.com/ericasaffron/initial-consultation" target="_blank" rel="noopener" class="btn btn--primary">Schedule a call →</a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer__inner">
+      <nav class="footer__nav">
+        <a href="index.html">Home</a>
+        <a href="portfolio.html">Case studies</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <p class="footer__copy">© 2026 Erica Saffron</p>
+    </div>
+  </footer>
+
+  <script src="js/nav.js"></script>
+  <script>
+    // Filter
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.project-card[data-category]');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        cards.forEach(card => {
+          if (filter === 'all' || card.dataset.category.includes(filter)) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

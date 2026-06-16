@@ -1,0 +1,39 @@
+<svg width="900" height="420" viewBox="0 0 900 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="900" height="420" rx="24" fill="#FAFAFA"/>
+  <rect x="40" y="36" width="820" height="348" rx="18" fill="white" stroke="#E8E8E8"/>
+  <text x="76" y="82" fill="#0A0A0A" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">Skincare domain model</text>
+  <text x="76" y="106" fill="#555555" font-family="Inter, Arial, sans-serif" font-size="12">Concept map for products, consumers, routines, and expert guidance.</text>
+
+  <rect x="96" y="145" width="160" height="88" rx="14" fill="#F5F5F5" stroke="#E8E8E8"/>
+  <text x="126" y="180" fill="#0A0A0A" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="600">Skincare</text>
+  <text x="112" y="202" fill="#555555" font-family="Inter, Arial, sans-serif" font-size="12">Core entity</text>
+
+  <rect x="310" y="96" width="180" height="96" rx="14" fill="#F5F5F5" stroke="#E8E8E8"/>
+  <text x="340" y="130" fill="#0A0A0A" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="600">Skincare Products</text>
+  <text x="326" y="152" fill="#555555" font-family="Inter, Arial, sans-serif" font-size="12">Ingredients • Types • Reviews</text>
+
+  <rect x="310" y="217" width="180" height="96" rx="14" fill="#F5F5F5" stroke="#E8E8E8"/>
+  <text x="338" y="251" fill="#0A0A0A" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="600">Skincare Consumers</text>
+  <text x="326" y="273" fill="#555555" font-family="Inter, Arial, sans-serif" font-size="12">Skin type • Concern • Routine</text>
+
+  <rect x="535" y="145" width="180" height="96" rx="14" fill="#F5F5F5" stroke="#E8E8E8"/>
+  <text x="566" y="179" fill="#0A0A0A" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="600">Skincare Routines</text>
+  <text x="554" y="201" fill="#555555" font-family="Inter, Arial, sans-serif" font-size="12">Morning • Night-time</text>
+
+  <rect x="758" y="110" width="150" height="86" rx="14" fill="#F5F5F5" stroke="#E8E8E8"/>
+  <text x="786" y="144" fill="#0A0A0A" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="600">Dermatologists</text>
+  <text x="785" y="166" fill="#555555" font-family="Inter, Arial, sans-serif" font-size="12">Expert guidance</text>
+
+  <rect x="758" y="233" width="150" height="86" rx="14" fill="#F5F5F5" stroke="#E8E8E8"/>
+  <text x="783" y="267" fill="#0A0A0A" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="600">Community Forum</text>
+  <text x="786" y="289" fill="#555555" font-family="Inter, Arial, sans-serif" font-size="12">Reviews • Advice</text>
+
+  <path d="M256 189H310" stroke="#0A0A0A" stroke-width="2" stroke-linecap="round"/>
+  <path d="M256 189H310" stroke="#0A0A0A" stroke-width="2" stroke-linecap="round"/>
+  <path d="M400 192V217" stroke="#0A0A0A" stroke-width="2" stroke-linecap="round"/>
+  <path d="M490 144H535" stroke="#0A0A0A" stroke-width="2" stroke-linecap="round"/>
+  <path d="M490 144H535" stroke="#0A0A0A" stroke-width="2" stroke-linecap="round"/>
+  <path d="M715 190H758" stroke="#0A0A0A" stroke-width="2" stroke-linecap="round"/>
+  <path d="M715 190H758" stroke="#0A0A0A" stroke-width="2" stroke-linecap="round"/>
+  <path d="M625 241V276H758" stroke="#0A0A0A" stroke-width="2" stroke-linecap="round"/>
+</svg>

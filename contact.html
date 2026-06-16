@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Erica Saffron</title>
+  <meta name="description" content="Get in touch with Erica Saffron, UX Designer and Researcher based in Brighton.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <nav class="nav">
+    <div class="nav__inner">
+           <a href="index.html" class="nav__logo" aria-label="Erica Saffron home">
+        <img src="images/logo-black.jpg" alt="Erica Saffron" style="width:40px;height:40px;border-radius:999px;object-fit:cover;display:block;">
+      </a>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="portfolio.html">Case studies</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+      <button class="nav__toggle" id="navToggle" type="button" aria-label="Toggle navigation menu" aria-controls="navLinks" aria-expanded="false" aria-haspopup="true">
+        <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+      </button>
+    </div>
+  </nav>
+
+  <main id="main">
+
+    <section class="contact-hero">
+      <div class="container">
+        <h1>Have an idea?<br>Let's connect.</h1>
+        <p>I'd love to discuss how my experience in UX design and user research can help support your project, team, or business goals. </p>
+        <p>Feel free to get in touch to start a conversation.</p>
+      </div>
+    </section>
+
+    <section style="padding: 56px 0 80px;">
+      <div class="container">
+        <div class="contact-grid">
+
+          <!-- Left: schedule + links -->
+          <div style="display:flex;flex-direction:column;gap:24px;">
+
+            <div class="contact-card">
+              <h3>Schedule a call</h3>
+              <p>Book a free 30-minute consultation via Calendly. I'll reply to booking requests within 12 hours.</p>
+              <a href="https://calendly.com/ericasaffron/initial-consultation" target="_blank" rel="noopener" class="btn btn--primary" style="width:fit-content;">Book a meeting →</a>
+            </div>
+
+            <div class="contact-card">
+              <h3>Find me online</h3>
+              <p>Connect with me on LinkedIn or see my graphic design and illustration work on ArtStation.</p>
+              <div class="contact-links">
+                <a href="https://www.linkedin.com/in/ericasaffron" target="_blank" rel="noopener" class="contact-link">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 10v7M7 7v.01M12 17v-4a2 2 0 014 0v4M12 10v7"/></svg>
+                  LinkedIn
+                </a>
+                <a href="https://www.artstation.com/ericasaffron" target="_blank" rel="noopener" class="contact-link">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 17l4-10 4 10M9.5 14h5"/></svg>
+                  ArtStation
+                </a>
+                <a href="https://drive.google.com/file/d/1ngbj_arlT2yqT3ZzSius71A56DwbxtFd/view" target="_blank" rel="noopener" class="contact-link">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                  Download CV
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right: message form -->
+          <div class="contact-card">
+            <h3>Send a message</h3>
+            <p>Prefer to write? Send me a message and I'll reply within 12 hours.</p>
+            <form id="contactForm" novalidate>
+              <input type="hidden" name="access_key" value="0bf2b426-7b29-4762-b055-c6d1f517f14d">
+              <input type="hidden" name="from_name" value="Erica Saffron Portfolio">
+              <input type="checkbox" name="botcheck" style="display:none;">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" autocomplete="name" placeholder="Your name" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" autocomplete="email" placeholder="your@email.com" required>
+              </div>
+              <div class="form-group">
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" autocomplete="off" placeholder="What's this about?" aria-describedby="subjectError">
+                <span id="subjectError" style="display:none;font-size:12px;color:#c0392b;margin-top:4px;">Please enter a subject.</span>
+              </div>
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" autocomplete="off" placeholder="Tell me about your project..." aria-describedby="messageError"></textarea>
+                <span id="messageError" style="display:none;font-size:12px;color:#c0392b;margin-top:4px;">Please enter a message.</span>
+              </div>
+              <div class="h-captcha" data-sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2" style="margin-bottom:16px;"></div>
+              <button type="submit" class="btn btn--primary" style="width:100%;justify-content:center;" id="submitBtn">Send message →</button>
+              <p id="formMsg" style="font-size:13px;margin-top:12px;text-align:center;display:none;"></p>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="footer-cta">
+      <div class="container">
+        <h2 class="footer-cta__heading">Let's create your<br>next big idea.</h2>
+        <a href="https://calendly.com/ericasaffron/initial-consultation" target="_blank" rel="noopener" class="btn btn--primary">Schedule a call →</a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer__inner">
+      <nav class="footer__nav">
+        <a href="index.html">Home</a>
+        <a href="portfolio.html">Case studies</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <p class="footer__copy">© 2026 Erica Saffron</p>
+    </div>
+  </footer>
+
+  <script src="js/nav.js"></script>
+  <script>
+    const subjectInput = document.getElementById('subject');
+    const messageInput = document.getElementById('message');
+    const subjectError = document.getElementById('subjectError');
+    const messageError = document.getElementById('messageError');
+
+    function setError(input, errorEl, show) {
+      errorEl.style.display = show ? 'block' : 'none';
+      input.style.outline = show ? '2px solid #c0392b' : '';
+    }
+
+    subjectInput.addEventListener('input', () => setError(subjectInput, subjectError, false));
+    messageInput.addEventListener('input', () => setError(messageInput, messageError, false));
+
+    document.getElementById('contactForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      const msg = document.getElementById('formMsg');
+
+      const subjectEmpty = !subjectInput.value.trim();
+      const messageEmpty = !messageInput.value.trim();
+      setError(subjectInput, subjectError, subjectEmpty);
+      setError(messageInput, messageError, messageEmpty);
+      if (subjectEmpty || messageEmpty) {
+        if (subjectEmpty) subjectInput.focus();
+        else messageInput.focus();
+        return;
+      }
+
+      // Block submission if hCaptcha hasn't been completed
+      if (!hcaptcha.getResponse()) {
+        msg.textContent = 'Please tick the "I\'m not a robot" box before sending.';
+        msg.style.color = '#c0392b';
+        msg.style.display = 'block';
+        return;
+      }
+
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+      msg.style.display = 'none';
+
+      const data = new FormData(this);
+      data.delete('g-recaptcha-response');
+
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: data
+        });
+        const json = await res.json();
+
+        if (json.success) {
+          msg.style.color = 'var(--gray-600)';
+          msg.style.display = 'block';
+          this.reset();
+          hcaptcha.reset();
+          setError(subjectInput, subjectError, false);
+          setError(messageInput, messageError, false);
+
+          let remaining = 30;
+          btn.textContent = `Send another in ${remaining}s`;
+          msg.textContent = `✓ Message sent! I'll reply within 12 hours.`;
+          const countdown = setInterval(() => {
+            remaining--;
+            if (remaining > 0) {
+              btn.textContent = `Send another in ${remaining}s`;
+            } else {
+              clearInterval(countdown);
+              btn.textContent = 'Send message →';
+              btn.disabled = false;
+              msg.style.display = 'none';
+            }
+          }, 1000);
+        } else {
+          msg.textContent = 'Something went wrong — please email me directly at ericasaffron@outlook.com';
+          msg.style.color = '#c0392b';
+          msg.style.display = 'block';
+          btn.textContent = 'Send message →';
+          btn.disabled = false;
+        }
+      } catch (_) {
+        msg.textContent = 'Something went wrong — please email me directly at ericasaffron@outlook.com';
+        msg.style.color = '#c0392b';
+        msg.style.display = 'block';
+        btn.textContent = 'Send message →';
+        btn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>

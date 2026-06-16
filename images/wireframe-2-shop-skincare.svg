@@ -1,0 +1,24 @@
+<svg width="800" height="520" viewBox="0 0 800 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="520" rx="24" fill="#FAFAFA"/>
+  <rect x="34" y="34" width="732" height="452" rx="18" fill="white" stroke="#E8E8E8"/>
+  <rect x="64" y="72" width="180" height="376" rx="14" fill="#F5F5F5" stroke="#E8E8E8"/>
+  <rect x="264" y="72" width="472" height="54" rx="12" fill="#F5F5F5" stroke="#E8E8E8"/>
+  <rect x="264" y="146" width="472" height="86" rx="14" fill="#F5F5F5" stroke="#E8E8E8"/>
+  <rect x="264" y="252" width="142" height="196" rx="14" fill="#F5F5F5" stroke="#E8E8E8"/>
+  <rect x="420" y="252" width="142" height="196" rx="14" fill="#F5F5F5" stroke="#E8E8E8"/>
+  <rect x="576" y="252" width="160" height="196" rx="14" fill="#F5F5F5" stroke="#E8E8E8"/>
+  <rect x="88" y="102" width="132" height="12" rx="6" fill="#D8D8D8"/>
+  <rect x="88" y="140" width="92" height="10" rx="5" fill="#EFEFEF"/>
+  <rect x="88" y="180" width="116" height="10" rx="5" fill="#EFEFEF"/>
+  <rect x="88" y="220" width="96" height="10" rx="5" fill="#EFEFEF"/>
+  <rect x="296" y="170" width="180" height="12" rx="6" fill="#0A0A0A" opacity="0.9"/>
+  <rect x="296" y="198" width="130" height="10" rx="5" fill="#B8B8B8"/>
+  <rect x="296" y="284" width="82" height="12" rx="6" fill="#0A0A0A" opacity="0.9"/>
+  <rect x="296" y="318" width="90" height="10" rx="5" fill="#B8B8B8"/>
+  <rect x="452" y="284" width="82" height="12" rx="6" fill="#0A0A0A" opacity="0.9"/>
+  <rect x="452" y="318" width="96" height="10" rx="5" fill="#B8B8B8"/>
+  <rect x="608" y="284" width="82" height="12" rx="6" fill="#0A0A0A" opacity="0.9"/>
+  <rect x="608" y="318" width="100" height="10" rx="5" fill="#B8B8B8"/>
+  <text x="64" y="428" fill="#0A0A0A" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="600">Wireframe 2</text>
+  <text x="64" y="448" fill="#555555" font-family="Inter, Arial, sans-serif" font-size="12">Shop Skincare / results page</text>
+</svg>

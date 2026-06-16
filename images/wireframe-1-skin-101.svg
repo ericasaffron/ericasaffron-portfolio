@@ -1,0 +1,23 @@
+<svg width="800" height="520" viewBox="0 0 800 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="520" rx="24" fill="#FAFAFA"/>
+  <rect x="34" y="34" width="732" height="452" rx="18" fill="white" stroke="#E8E8E8"/>
+  <rect x="64" y="72" width="150" height="376" rx="14" fill="#F5F5F5" stroke="#E8E8E8"/>
+  <rect x="242" y="72" width="494" height="54" rx="12" fill="#F5F5F5" stroke="#E8E8E8"/>
+  <rect x="242" y="146" width="494" height="92" rx="14" fill="#F5F5F5" stroke="#E8E8E8"/>
+  <rect x="242" y="258" width="228" height="180" rx="14" fill="#F5F5F5" stroke="#E8E8E8"/>
+  <rect x="490" y="258" width="246" height="180" rx="14" fill="#F5F5F5" stroke="#E8E8E8"/>
+  <rect x="84" y="98" width="110" height="12" rx="6" fill="#D8D8D8"/>
+  <rect x="84" y="132" width="90" height="10" rx="5" fill="#EFEFEF"/>
+  <rect x="84" y="188" width="110" height="10" rx="5" fill="#EFEFEF"/>
+  <rect x="84" y="214" width="92" height="10" rx="5" fill="#EFEFEF"/>
+  <rect x="84" y="272" width="110" height="10" rx="5" fill="#EFEFEF"/>
+  <rect x="84" y="298" width="86" height="10" rx="5" fill="#EFEFEF"/>
+  <rect x="274" y="166" width="180" height="12" rx="6" fill="#0A0A0A" opacity="0.9"/>
+  <rect x="274" y="194" width="150" height="10" rx="5" fill="#B8B8B8"/>
+  <rect x="274" y="286" width="152" height="12" rx="6" fill="#0A0A0A" opacity="0.9"/>
+  <rect x="274" y="316" width="130" height="10" rx="5" fill="#B8B8B8"/>
+  <rect x="522" y="286" width="152" height="12" rx="6" fill="#0A0A0A" opacity="0.9"/>
+  <rect x="522" y="316" width="136" height="10" rx="5" fill="#B8B8B8"/>
+  <text x="64" y="428" fill="#0A0A0A" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="600">Wireframe 1</text>
+  <text x="64" y="448" fill="#555555" font-family="Inter, Arial, sans-serif" font-size="12">Skin 101 / educational page</text>
+</svg>
